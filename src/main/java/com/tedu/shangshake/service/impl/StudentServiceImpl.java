@@ -69,4 +69,23 @@ public class StudentServiceImpl implements StudentService {
 
         return studentVO;
     }
+
+    @Override
+    public Boolean changePassword(StudentChangePasswordDTO studentChangePasswordDTO) {
+
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("sno",studentChangePasswordDTO.getSno());
+        queryWrapper.eq("password",studentChangePasswordDTO.getOldPassword());
+
+        StudentDAO studentDAO = studentMapper.selectOne(queryWrapper);
+        if(studentDAO != null) {
+            studentDAO.setPassword(studentChangePasswordDTO.getNewPassword());
+            int update = studentMapper.update(studentDAO, queryWrapper);
+            if(update != 0){
+                return true;
+            }
+            else return false;
+        }
+        else return null;
+    }
 }

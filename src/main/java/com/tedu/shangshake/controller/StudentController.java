@@ -1,9 +1,6 @@
 package com.tedu.shangshake.controller;
 
-import com.tedu.shangshake.pojo.ServerResult;
-import com.tedu.shangshake.pojo.StudentLoginDTO;
-import com.tedu.shangshake.pojo.StudentRegisterDTO;
-import com.tedu.shangshake.pojo.StudentVO;
+import com.tedu.shangshake.pojo.*;
 import com.tedu.shangshake.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,5 +43,14 @@ public class StudentController {
             return new ServerResult(-1,"failed:no such id",null);
 
 
+    }
+
+    @RequestMapping("/changePassword")
+    public ServerResult changePassword(StudentChangePasswordDTO studentChangePasswordDTO){
+        Boolean aBoolean = studentService.changePassword(studentChangePasswordDTO);
+        if(aBoolean)
+            return new ServerResult(0,"success", true);
+        else
+            return new ServerResult(-1,"failed",false);
     }
 }
