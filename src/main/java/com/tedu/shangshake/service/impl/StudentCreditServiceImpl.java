@@ -34,8 +34,20 @@ public class StudentCreditServiceImpl implements StudentCreditService {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("no", no);
         StudentDAO studentDAO = studentMapper.selectOne(queryWrapper);
-        Integer kNo = studentDAO.getKno();
-        //再通过专业号
+        Integer spNo = studentDAO.getSpno();
+        //再通过专业号查出专业对应的总学分列表
+        queryWrapper = new QueryWrapper();
+        queryWrapper.eq("spno", spNo);
+        List<SpecialtyKindCreditDAO> spkcDAOList = specialtyKindCreditMapper.selectList(queryWrapper);
+
+        for (SpecialtyKindCreditDAO spkcDAO : spkcDAOList) {
+            //查询出专业名
+            queryWrapper = new QueryWrapper();
+            queryWrapper.eq("no", spkcDAO.getKno());
+            SpecialtyDAO specialtyDAO = specialtyMapper.selectOne(queryWrapper);
+            AllConditionVO acVO = new AllConditionVO();
+            acVO.setkName(specialtyDAO.getSpname());
+        }
 
         return null;
     }
