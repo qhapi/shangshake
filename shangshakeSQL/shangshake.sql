@@ -182,7 +182,6 @@ DROP TABLE IF EXISTS `student`;
 
 CREATE TABLE `student` (
   `sno` int(11) NOT NULL AUTO_INCREMENT,
-  `kno` int(11) DEFAULT NULL,
   `spno` int(11) DEFAULT NULL COMMENT '专业号',
   `sname` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
@@ -196,7 +195,7 @@ CREATE TABLE `student` (
 
 /*Data for the table `student` */
 
-insert  into `student`(`sno`,`kno`,`spno`,`sname`,`username`,`password`,`phonenumber`,`spicture`,`sex`,`grade`) values (800557,NULL,1,'戚桂岳','qhapi','666666','18353807985',NULL,'男','2019'),(2019001,NULL,1,'张三','三德子','123456','19155556666','002.png','男','2019');
+insert  into `student`(`sno`,`spno`,`sname`,`username`,`password`,`phonenumber`,`spicture`,`sex`,`grade`) values (800557,1,'戚桂岳','qhapi','666666','18353807985',NULL,'男','2019'),(2019001,1,'张三','三德子','123456','19155556666','002.png','男','2019');
 
 /*Table structure for table `teacher` */
 
