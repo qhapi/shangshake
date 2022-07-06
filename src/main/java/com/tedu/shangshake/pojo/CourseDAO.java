@@ -9,7 +9,7 @@ public class CourseDAO {
     Float averagestar;
     Float credit;
     String cintroduction;
-    String cpictrue;
+    String cpicture;
     Integer kno;
 
     public Integer getCno() {
@@ -52,12 +52,12 @@ public class CourseDAO {
         this.cintroduction = cintroduction;
     }
 
-    public String getCpictrue() {
-        return cpictrue;
+    public String getCpicture() {
+        return cpicture;
     }
 
-    public void setCpictrue(String cpictrue) {
-        this.cpictrue = cpictrue;
+    public void setCpicture(String cpicture) {
+        this.cpicture = cpicture;
     }
 
     public Integer getKno() {
