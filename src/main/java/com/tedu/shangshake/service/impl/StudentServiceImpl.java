@@ -86,6 +86,26 @@ public class StudentServiceImpl implements StudentService {
             }
             else return false;
         }
-        else return null;
+        else return false;
+    }
+
+    @Override
+    public Boolean updateStudentInfo(StudentUpdateDTO studentUpdateDTO) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("sno",studentUpdateDTO.getSno());
+        StudentDAO studentDAO = studentMapper.selectOne(queryWrapper);
+        if(studentDAO != null){
+            studentDAO.setUsername(studentUpdateDTO.getUsername());
+            studentDAO.setPhonenumber(studentUpdateDTO.getPhonenumber());
+            studentDAO.setSpicture(studentUpdateDTO.getSpicture());
+
+            int update = studentMapper.update(studentDAO, queryWrapper);
+            if(update != 0){
+                return true;
+            }
+            else return false;
+        }
+        else return false;
+
     }
 }

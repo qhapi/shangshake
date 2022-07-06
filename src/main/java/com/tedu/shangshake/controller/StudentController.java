@@ -53,4 +53,13 @@ public class StudentController {
         else
             return new ServerResult(-1,"failed",false);
     }
+
+    @RequestMapping("/updateStudentInfo")
+    public ServerResult updateStudentInfo(StudentUpdateDTO studentUpdateDTO){
+        Boolean aBoolean = studentService.updateStudentInfo(studentUpdateDTO);
+        if(aBoolean)
+            return new ServerResult(0,"success", true);
+        else
+            return new ServerResult(-1,"failed",false);
+    }
 }
