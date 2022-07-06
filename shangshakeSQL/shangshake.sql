@@ -25,13 +25,13 @@ CREATE TABLE `appraise` (
   `acontent` varchar(255) DEFAULT NULL,
   `astar` float NOT NULL,
   `atime` time NOT NULL,
-  `is_anonymous` tinyint(1) NOT NULL DEFAULT 0,
+  `isanonymous` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`ano`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20002 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `appraise` */
 
-insert  into `appraise`(`ano`,`acontent`,`astar`,`atime`,`is_anonymous`) values (20001,'课程/教师真心不错',9.5,'00:20:20',0);
+insert  into `appraise`(`ano`,`acontent`,`astar`,`atime`,`isanonymous`) values (20001,'课程/教师真心不错',9.5,'00:20:20',0);
 
 /*Table structure for table `course` */
 
@@ -40,7 +40,7 @@ DROP TABLE IF EXISTS `course`;
 CREATE TABLE `course` (
   `cno` int(11) NOT NULL AUTO_INCREMENT,
   `cname` varchar(255) NOT NULL,
-  `average_star` float DEFAULT NULL,
+  `averagestar` float DEFAULT NULL,
   `credit` float NOT NULL,
   `cintroduction` varchar(255) DEFAULT NULL,
   `cpicture` varchar(255) DEFAULT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE `course` (
 
 /*Data for the table `course` */
 
-insert  into `course`(`cno`,`cname`,`average_star`,`credit`,`cintroduction`,`cpicture`,`kno`) values (10001,'C语言程序设计',9.5,3.5,'C语言是最基础的高级程序设计语言...','001.png',NULL);
+insert  into `course`(`cno`,`cname`,`averagestar`,`credit`,`cintroduction`,`cpicture`,`kno`) values (10001,'C语言程序设计',9.5,3.5,'C语言是最基础的高级程序设计语言...','001.png',NULL);
 
 /*Table structure for table `ct` */
 
@@ -157,7 +157,7 @@ DROP TABLE IF EXISTS `spkcredit`;
 CREATE TABLE `spkcredit` (
   `spno` int(11) NOT NULL,
   `kno` int(11) NOT NULL,
-  `credit` int(11) DEFAULT NULL,
+  `credit` float DEFAULT NULL,
   PRIMARY KEY (`spno`,`kno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
