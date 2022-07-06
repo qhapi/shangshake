@@ -29,6 +29,8 @@ public class StudentCreditServiceImpl implements StudentCreditService {
     @Autowired
     StudentCourseTeacherCurrentMapper studentCourseTeacherCurrentMapper;
 
+    Map<Integer, Integer> cPassMap;
+
     //输入学生no，返回学生的总的学分修读情况。
     //QueryWrapper并不能真正的多表查询。
     @Override
@@ -89,14 +91,15 @@ public class StudentCreditServiceImpl implements StudentCreditService {
             kindCurrCreditMap.put(kind, creditSum);
         }
 
-        //遍历类型（从45行移了过来）
+        //遍历类型（从spkcDAOList定义的地方移了过来）
         for (SpecialtyKindCreditDAO spkcDAO : spkcDAOList) {
-            //查询出专业名
+            //查询出类型名
             queryWrapper = new QueryWrapper();
             queryWrapper.eq("no", spkcDAO.getKno());
-            SpecialtyDAO specialtyDAO = specialtyMapper.selectOne(queryWrapper);
+            KindDAO kindDAO = kindMapper.selectOne(queryWrapper);
+
             AllConditionVO acVO = new AllConditionVO();
-            acVO.setkName(specialtyDAO.getSpname());//设置专业名
+            acVO.setkName(kindDAO.getKname());//设置专业名
             acVO.setAllCredit(spkcDAO.getCredit());//设置总学分
             //将kindCreditMap中的分数加到已修学分中
             acVO.setHistoryCredit(kindCreditMap.get(spkcDAO.getKno()));
@@ -104,11 +107,32 @@ public class StudentCreditServiceImpl implements StudentCreditService {
             voList.add(acVO);
         }
 
+        this.cPassMap = cPassMap;
+
         return voList;
     }
 
     @Override
     public List<CurrentConditionVO> getCurrentCondition(CurrentConditionDTO dto) {
-        return null;
+        //课程号、课程名、星级、学分、介绍、图像、是否通过
+        ArrayList<CurrentConditionVO> voList = new ArrayList<>();
+        //dot中有（学生编号）sNo和（类型编号）kNo
+        //this.cPassMap中有该学生所有已选课程的是否通过情况。
+        for (Integer cno : this.cPassMap.keySet()) {
+            QueryWrapper queryWrapper = new QueryWrapper();
+            queryWrapper.eq("no", cno);
+            CourseDAO courseDAO = courseMapper.selectOne(queryWrapper);
+            CurrentConditionVO vo = new CurrentConditionVO();
+            vo.setNo(cno);
+            vo.setName(courseDAO.getCname());
+            vo.setAverageStar(courseDAO.getAveragestar());
+            vo.setCredit(courseDAO.getCredit());
+            vo.setIntroduction(courseDAO.getCintroduction());
+            vo.setPicture(courseDAO.getCpictrue());
+            vo.setPassed(this.cPassMap.get(cno));
+            voList.add(vo);
+        }
+
+        return voList;
     }
 }
