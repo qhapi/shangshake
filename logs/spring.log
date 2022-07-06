@@ -137,3 +137,41 @@ java.sql.SQLSyntaxErrorException: Unknown column 'phone_number' in 'field list'
 2022-07-06 17:40:44.656 DEBUG 20968 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ? AND password = ?) 
 2022-07-06 17:40:44.681 DEBUG 20968 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer), 123456(String)
 2022-07-06 17:40:44.701 DEBUG 20968 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-06 20:07:24.017  INFO 20928 --- [main] c.tedu.shangshake.ShangshakeApplication  : Starting ShangshakeApplication on LAPTOP-OUK8U1QH with PID 20928 (D:\javaproject\shangshake\target\classes started by Arthur in D:\javaproject\shangshake)
+2022-07-06 20:07:24.019 DEBUG 20928 --- [main] c.tedu.shangshake.ShangshakeApplication  : Running with Spring Boot v2.3.7.RELEASE, Spring v5.2.12.RELEASE
+2022-07-06 20:07:24.019  INFO 20928 --- [main] c.tedu.shangshake.ShangshakeApplication  : No active profile set, falling back to default profiles: default
+2022-07-06 20:07:24.923  INFO 20928 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9002 (http)
+2022-07-06 20:07:24.930  INFO 20928 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-07-06 20:07:24.931  INFO 20928 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2022-07-06 20:07:24.995  INFO 20928 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-07-06 20:07:24.996  INFO 20928 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 938 ms
+2022-07-06 20:07:25.214  WARN 20928 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentDAO.
+2022-07-06 20:07:25.542  INFO 20928 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2022-07-06 20:07:25.611  INFO 20928 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-07-06 20:07:25.711  WARN 20928 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.AppraiseDAO.
+2022-07-06 20:07:25.734  WARN 20928 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.CourseDAO.
+2022-07-06 20:07:25.756  WARN 20928 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.CourseTeacherDAO.
+2022-07-06 20:07:25.779  WARN 20928 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.KindDAO.
+2022-07-06 20:07:25.800  WARN 20928 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.SpecialtyCourseDAO.
+2022-07-06 20:07:25.825  WARN 20928 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.SpecialtyKindCreditDAO.
+2022-07-06 20:07:25.848  WARN 20928 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.SpecialtyDAO.
+2022-07-06 20:07:25.873  WARN 20928 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentCourseAppraiseDAO.
+2022-07-06 20:07:25.899  WARN 20928 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentCourseTeacherCurrentDAO.
+2022-07-06 20:07:25.922  WARN 20928 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentCourseTeacherDAO.
+2022-07-06 20:07:25.975  WARN 20928 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.TeacherDAO.
+2022-07-06 20:07:26.066  INFO 20928 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9002 (http) with context path ''
+2022-07-06 20:07:26.067  INFO 20928 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Documentation plugins bootstrapped
+2022-07-06 20:07:26.071  INFO 20928 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-07-06 20:07:26.093  INFO 20928 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-07-06 20:07:26.221  INFO 20928 --- [main] c.tedu.shangshake.ShangshakeApplication  : Started ShangshakeApplication in 2.548 seconds (JVM running for 3.154)
+2022-07-06 20:07:28.615  INFO 20928 --- [http-nio-9002-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-06 20:07:28.615  INFO 20928 --- [http-nio-9002-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-07-06 20:07:28.620  INFO 20928 --- [http-nio-9002-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2022-07-06 20:08:16.253  INFO 20928 --- [http-nio-9002-exec-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-06 20:08:16.377  INFO 20928 --- [http-nio-9002-exec-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-06 20:08:16.383 DEBUG 20928 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-06 20:08:16.403 DEBUG 20928 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 800557(Integer)
+2022-07-06 20:08:16.419 DEBUG 20928 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-06 20:08:16.429 DEBUG 20928 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.update        : ==>  Preparing: UPDATE student SET sno=?, spno=?, sname=?, username=?, password=?, phonenumber=?, sex=?, grade=? WHERE (sno = ?) 
+2022-07-06 20:08:16.432 DEBUG 20928 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.update        : ==> Parameters: 800557(Integer), 1(Integer), 戚桂岳(String), qhapi(String), 666666(String), 18353807985(String), 男(String), 2019(String), 800557(Integer)
+2022-07-06 20:08:16.435 DEBUG 20928 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.update        : <==    Updates: 1
