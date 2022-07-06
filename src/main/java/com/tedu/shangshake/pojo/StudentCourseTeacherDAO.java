@@ -7,6 +7,7 @@ public class StudentCourseTeacherDAO {
     Integer sno;
     Integer cno;
     Integer tno;
+    Integer passed;
 
     public Integer getSno() {
         return sno;
@@ -30,5 +31,13 @@ public class StudentCourseTeacherDAO {
 
     public void setTno(Integer tno) {
         this.tno = tno;
+    }
+
+    public Integer getPassed() {
+        return passed;
+    }
+
+    public void setPassed(Integer passed) {
+        this.passed = passed;
     }
 }

@@ -5,9 +5,9 @@ package com.tedu.shangshake.pojo;
 //需修学分 = 总学分 - 修完的学分 - 正修读学分
 public class AllConditionVO {
     public String kName;//课程类型名
-    public Integer allCredit;//当前课程类型的总学分
-    public Integer historyCredit;//修完的学分
-    public Integer currentCredit;//正修读学分
+    public float allCredit;//当前课程类型的总学分
+    public float historyCredit;//修完的学分
+    public float currentCredit;//正修读学分
 
     public String getkName() {
         return kName;
@@ -17,27 +17,27 @@ public class AllConditionVO {
         this.kName = kName;
     }
 
-    public Integer getAllCredit() {
+    public float getAllCredit() {
         return allCredit;
     }
 
-    public void setAllCredit(Integer allCredit) {
+    public void setAllCredit(float allCredit) {
         this.allCredit = allCredit;
     }
 
-    public Integer getHistoryCredit() {
+    public float getHistoryCredit() {
         return historyCredit;
     }
 
-    public void setHistoryCredit(Integer historyCredit) {
+    public void setHistoryCredit(float historyCredit) {
         this.historyCredit = historyCredit;
     }
 
-    public Integer getCurrentCredit() {
+    public float getCurrentCredit() {
         return currentCredit;
     }
 
-    public void setCurrentCredit(Integer currentCredit) {
+    public void setCurrentCredit(float currentCredit) {
         this.currentCredit = currentCredit;
     }
 }

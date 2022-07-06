@@ -30,8 +30,6 @@ public class StudentDAO {
         this.spicture = spicture;
     }
 
-
-
     public Integer getSno() {
         return sno;
     }
