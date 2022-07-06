@@ -1,11 +1,11 @@
 package com.tedu.shangshake.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.tedu.shangshake.mapper.SpecialtyMapper;
 import com.tedu.shangshake.mapper.StudentMapper;
-import com.tedu.shangshake.pojo.StudentDAO;
-import com.tedu.shangshake.pojo.StudentLoginDTO;
-import com.tedu.shangshake.pojo.StudentRegisterDTO;
+import com.tedu.shangshake.pojo.*;
 import com.tedu.shangshake.service.StudentService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 public class StudentServiceImpl implements StudentService {
     @Autowired
     StudentMapper studentMapper;
+    @Autowired
+    SpecialtyMapper specialtyMapper;
 
     @Override
     public Integer login(StudentLoginDTO studentLoginDTO) {
@@ -47,5 +49,24 @@ public class StudentServiceImpl implements StudentService {
         else
             return -1;
 
+    }
+
+    @Override
+    public StudentVO getStudentInfo(Integer sno) {
+        QueryWrapper studentQuery = new QueryWrapper();
+        studentQuery.eq("sno",sno);
+        StudentDAO studentDAO = studentMapper.selectOne(studentQuery);
+
+        if(studentDAO == null)
+            return null;
+        QueryWrapper specialtyQuery = new QueryWrapper();
+        specialtyQuery.eq("spno",studentDAO.getSpno());
+        SpecialtyDAO specialtyDAO = specialtyMapper.selectOne(specialtyQuery);
+
+        StudentVO studentVO = new StudentVO();
+        BeanUtils.copyProperties(studentDAO,studentVO);
+        studentVO.setSpname(specialtyDAO.getSpname());
+
+        return studentVO;
     }
 }
