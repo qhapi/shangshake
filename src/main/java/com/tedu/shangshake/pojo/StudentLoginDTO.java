@@ -1,6 +1,6 @@
 package com.tedu.shangshake.pojo;
 
-public class StudentDTO {
+public class StudentLoginDTO {
     Integer sno;
     String password;
 
