@@ -11,6 +11,23 @@ public class StudentDAO {
     String password;
     String phonenumber;
     String spicture;
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
+    public String getSpicture() {
+        return spicture;
+    }
+
+    public void setSpicture(String spicture) {
+        this.spicture = spicture;
+    }
+
     String sex;
     String grade;
 
@@ -52,22 +69,6 @@ public class StudentDAO {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getPhone_number() {
-        return phonenumber;
-    }
-
-    public void setPhone_number(String phone_number) {
-        this.phonenumber = phone_number;
-    }
-
-    public String getS_picture() {
-        return spicture;
-    }
-
-    public void setS_picture(String s_picture) {
-        this.spicture = s_picture;
     }
 
     public String getSex() {
