@@ -7,6 +7,6 @@ import com.tedu.shangshake.pojo.CurrentConditionVO;
 import java.util.List;
 
 public interface StudentCreditService {
-    AllConditionVO getAllCondition(Integer no);
+    List<AllConditionVO> getAllCondition(Integer no);
     List<CurrentConditionVO> getCurrentCondition(CurrentConditionDTO dto);
 }
