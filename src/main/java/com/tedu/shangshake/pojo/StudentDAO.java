@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 public class StudentDAO {
     Integer sno;
     Integer spno;
+    Integer kno;
     String sname;
     String username;
     String password;
@@ -85,5 +86,13 @@ public class StudentDAO {
 
     public void setGrade(String grade) {
         this.grade = grade;
+    }
+
+    public Integer getKno() {
+        return kno;
+    }
+
+    public void setKno(Integer kno) {
+        this.kno = kno;
     }
 }
