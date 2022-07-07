@@ -24,6 +24,8 @@ public class CourseServiceImpl implements CourseService {
     KindMapper kindMapper;
     @Autowired
     CourseTeacherMapper courseTeacherMapper;
+    @Autowired
+    StudentCourseAppraiseMapper studentCourseAppraiseMapper;
 
     @Override
     public List<CourseVO> getCourse() {
@@ -54,7 +56,7 @@ public class CourseServiceImpl implements CourseService {
         tcListQW.eq("cno",courseDAO.getCno());
         List<CourseTeacherDAO> courseTeacherDAOList=courseTeacherMapper.selectList(tcListQW);
 
-        List<CourseDetailVO> courseDetailVOList = new LinkedList<>();
+        ArrayList<CourseDetailVO> courseDetailVOList = new ArrayList<>();
 
         for(CourseTeacherDAO courseTeacherDAO:courseTeacherDAOList){
             CourseDetailVO courseDetailVO = new CourseDetailVO();
@@ -80,13 +82,49 @@ public class CourseServiceImpl implements CourseService {
         BeanUtils.copyProperties(studentCourseAppraiseInsertDTO,appraiseDAO);
         appraiseDAO.setAcontent(studentCourseAppraiseInsertDTO.getContent());
         int insertRow = appraiseMapper.insert(appraiseDAO);
-        Integer ano = appraiseDAO.getAno();
-        if(insertRow >= 1){
-            return true;
 
+        QueryWrapper maxid = new QueryWrapper();
+        maxid.orderByDesc("ano");
+        List<AppraiseDAO> maxids= appraiseMapper.selectList(maxid);
+
+        if(insertRow >= 1){
+            //插入信息到sca：studentCourseApprase表
+            StudentCourseAppraiseDAO studentCourseAppraiseDAO = new StudentCourseAppraiseDAO();
+            BeanUtils.copyProperties(studentCourseAppraiseInsertDTO,studentCourseAppraiseDAO);
+            studentCourseAppraiseDAO.setAno(maxids.get(0).getAno());
+            int insert = studentCourseAppraiseMapper.insert(studentCourseAppraiseDAO);
+            if(insert>=1){
+                return true;
+            }else {
+                //删除插入的评价信息
+                QueryWrapper deleteAppraise = new QueryWrapper();
+                deleteAppraise.eq("ano",maxids.get(0).getAno());
+                appraiseMapper.delete(deleteAppraise);
+                return false;
+            }
         }else
             return false;
-        //插入信息到sca：studentCourseApprase表
 
+
+    }
+
+    @Override
+    public List<AppraiseVO> getCourseAppraise(Integer courseId) {
+        //获取到课程的评论ano集合
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("cno",courseId);
+        List<StudentCourseAppraiseDAO> studentCourseAppraiseDAOS = studentCourseAppraiseMapper.selectList(queryWrapper);
+        //获取评价详细信息
+        ArrayList<AppraiseVO> appraiseVOList = new ArrayList<>();
+        for(StudentCourseAppraiseDAO studentCourseAppraiseDAO:studentCourseAppraiseDAOS){
+            QueryWrapper appraiseDetailQW = new QueryWrapper();
+            appraiseDetailQW.eq("ano",studentCourseAppraiseDAO.getAno());
+            AppraiseDAO appraiseDAO = appraiseMapper.selectOne(appraiseDetailQW);
+
+            AppraiseVO appraiseVO = new AppraiseVO();
+            BeanUtils.copyProperties(appraiseDAO,appraiseVO);
+            appraiseVOList.add(appraiseVO);
+        }
+        return appraiseVOList;
     }
 }
