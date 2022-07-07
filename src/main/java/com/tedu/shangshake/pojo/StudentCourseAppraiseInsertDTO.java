@@ -4,6 +4,24 @@ public class StudentCourseAppraiseInsertDTO {
     Integer sno;
     Integer cno;
     String content;
+    Boolean isanonymous;
+    Float astar;
+
+    public Boolean getIsanonymous() {
+        return isanonymous;
+    }
+
+    public void setIsanonymous(Boolean isanonymous) {
+        this.isanonymous = isanonymous;
+    }
+
+    public Float getAstar() {
+        return astar;
+    }
+
+    public void setAstar(Float astar) {
+        this.astar = astar;
+    }
 
     public Integer getSno() {
         return sno;
