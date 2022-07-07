@@ -69,7 +69,7 @@ public class StudentCreditServiceImpl implements StudentCreditService {
                 //如果通过，找到课程类型编号
                 queryWrapper = new QueryWrapper();
                 queryWrapper.eq("cno", cno);
-                CourseDAO courseDAO = courseMapper.selectOne(queryWrapper);
+                CourseDAO courseDAO = courseMapper.selectOne(queryWrapper);//
                 Integer kind = courseDAO.getKno();
                 Float credit = courseDAO.getCredit();
                 Float creditSum = kindCreditMap.get(kind) + credit;
