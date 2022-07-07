@@ -4605,3 +4605,127 @@ java.lang.IllegalArgumentException: Source must not be null
 2022-07-07 20:40:14.722 DEBUG 10372 --- [http-nio-9002-exec-9] c.t.s.m.S.insert                         : ==>  Preparing: INSERT INTO sta ( sno, tno, ano ) VALUES ( ?, ?, ? ) 
 2022-07-07 20:40:14.723 DEBUG 10372 --- [http-nio-9002-exec-9] c.t.s.m.S.insert                         : ==> Parameters: 2019001(Integer), 2005001(Integer), 20013(Integer)
 2022-07-07 20:40:14.726 DEBUG 10372 --- [http-nio-9002-exec-9] c.t.s.m.S.insert                         : <==    Updates: 1
+2022-07-07 21:48:38.466  INFO 27260 --- [main] c.tedu.shangshake.ShangshakeApplication  : Starting ShangshakeApplication on DESKTOP-TA5FPRP with PID 27260 (F:\IdeaProjects\shangshake\target\classes started by 23806 in F:\IdeaProjects\shangshake)
+2022-07-07 21:48:38.468 DEBUG 27260 --- [main] c.tedu.shangshake.ShangshakeApplication  : Running with Spring Boot v2.3.7.RELEASE, Spring v5.2.12.RELEASE
+2022-07-07 21:48:38.469  INFO 27260 --- [main] c.tedu.shangshake.ShangshakeApplication  : No active profile set, falling back to default profiles: default
+2022-07-07 21:48:39.501  INFO 27260 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9002 (http)
+2022-07-07 21:48:39.507  INFO 27260 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-07-07 21:48:39.507  INFO 27260 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2022-07-07 21:48:39.575  INFO 27260 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-07-07 21:48:39.575  INFO 27260 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1069 ms
+2022-07-07 21:48:40.676  WARN 27260 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.CourseDAO.
+2022-07-07 21:48:40.763  WARN 27260 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.TeacherDAO.
+2022-07-07 21:48:40.783  WARN 27260 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.AppraiseDAO.
+2022-07-07 21:48:40.798  WARN 27260 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.KindDAO.
+2022-07-07 21:48:40.813  WARN 27260 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.CourseTeacherDAO.
+2022-07-07 21:48:40.827  WARN 27260 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentCourseAppraiseDAO.
+2022-07-07 21:48:40.844  WARN 27260 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentDAO.
+2022-07-07 21:48:40.857  WARN 27260 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.SpecialtyDAO.
+2022-07-07 21:48:40.876  WARN 27260 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.SpecialtyKindCreditDAO.
+2022-07-07 21:48:40.889  WARN 27260 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentCourseTeacherDAO.
+2022-07-07 21:48:40.904  WARN 27260 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentCourseTeacherCurrentDAO.
+2022-07-07 21:48:40.919  WARN 27260 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentTeacherAppraiseDAO.
+2022-07-07 21:48:41.086  INFO 27260 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2022-07-07 21:48:41.138  INFO 27260 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-07-07 21:48:41.260  WARN 27260 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.SpecialtyCourseDAO.
+2022-07-07 21:48:41.295  INFO 27260 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9002 (http) with context path ''
+2022-07-07 21:48:41.296  INFO 27260 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Documentation plugins bootstrapped
+2022-07-07 21:48:41.299  INFO 27260 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-07-07 21:48:41.321  INFO 27260 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-07-07 21:48:41.500  INFO 27260 --- [main] c.tedu.shangshake.ShangshakeApplication  : Started ShangshakeApplication in 3.506 seconds (JVM running for 4.743)
+2022-07-07 21:49:15.619  INFO 27260 --- [http-nio-9002-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-07 21:49:15.619  INFO 27260 --- [http-nio-9002-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-07-07 21:49:15.623  INFO 27260 --- [http-nio-9002-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2022-07-07 21:59:02.364  INFO 14968 --- [main] c.tedu.shangshake.ShangshakeApplication  : Starting ShangshakeApplication on DESKTOP-TA5FPRP with PID 14968 (F:\IdeaProjects\shangshake\target\classes started by 23806 in F:\IdeaProjects\shangshake)
+2022-07-07 21:59:02.366 DEBUG 14968 --- [main] c.tedu.shangshake.ShangshakeApplication  : Running with Spring Boot v2.3.7.RELEASE, Spring v5.2.12.RELEASE
+2022-07-07 21:59:02.367  INFO 14968 --- [main] c.tedu.shangshake.ShangshakeApplication  : No active profile set, falling back to default profiles: default
+2022-07-07 21:59:03.292  INFO 14968 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9002 (http)
+2022-07-07 21:59:03.297  INFO 14968 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-07-07 21:59:03.297  INFO 14968 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2022-07-07 21:59:03.366  INFO 14968 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-07-07 21:59:03.366  INFO 14968 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 962 ms
+2022-07-07 21:59:04.474  WARN 14968 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.CourseDAO.
+2022-07-07 21:59:04.562  WARN 14968 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.TeacherDAO.
+2022-07-07 21:59:04.583  WARN 14968 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.AppraiseDAO.
+2022-07-07 21:59:04.600  WARN 14968 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.KindDAO.
+2022-07-07 21:59:04.615  WARN 14968 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.CourseTeacherDAO.
+2022-07-07 21:59:04.629  WARN 14968 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentCourseAppraiseDAO.
+2022-07-07 21:59:04.644  WARN 14968 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentDAO.
+2022-07-07 21:59:04.660  WARN 14968 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.SpecialtyDAO.
+2022-07-07 21:59:04.679  WARN 14968 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.SpecialtyKindCreditDAO.
+2022-07-07 21:59:04.694  WARN 14968 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentCourseTeacherDAO.
+2022-07-07 21:59:04.708  WARN 14968 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentCourseTeacherCurrentDAO.
+2022-07-07 21:59:04.724  WARN 14968 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentTeacherAppraiseDAO.
+2022-07-07 21:59:04.908  INFO 14968 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2022-07-07 21:59:04.971  INFO 14968 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-07-07 21:59:05.099  WARN 14968 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.SpecialtyCourseDAO.
+2022-07-07 21:59:05.145  INFO 14968 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9002 (http) with context path ''
+2022-07-07 21:59:05.146  INFO 14968 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Documentation plugins bootstrapped
+2022-07-07 21:59:05.149  INFO 14968 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-07-07 21:59:05.172  INFO 14968 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-07-07 21:59:05.345  INFO 14968 --- [main] c.tedu.shangshake.ShangshakeApplication  : Started ShangshakeApplication in 3.317 seconds (JVM running for 4.506)
+2022-07-07 21:59:22.411  INFO 14968 --- [http-nio-9002-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-07 21:59:22.411  INFO 14968 --- [http-nio-9002-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-07-07 21:59:22.416  INFO 14968 --- [http-nio-9002-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2022-07-07 21:59:41.909  INFO 14968 --- [http-nio-9002-exec-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-07 21:59:42.073  INFO 14968 --- [http-nio-9002-exec-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-07 21:59:42.080 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-07 21:59:42.101 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-07 21:59:42.124 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-07 21:59:42.130 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.m.S.selectList                     : ==>  Preparing: SELECT spno,kno,credit FROM spkcredit WHERE (spno = ?) 
+2022-07-07 21:59:42.130 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.m.S.selectList                     : ==> Parameters: 1(Integer)
+2022-07-07 21:59:42.134 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.m.S.selectList                     : <==      Total: 7
+2022-07-07 21:59:42.135 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectList       : ==>  Preparing: SELECT kno,kname FROM kind 
+2022-07-07 21:59:42.136 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectList       : ==> Parameters: 
+2022-07-07 21:59:42.138 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectList       : <==      Total: 7
+2022-07-07 21:59:42.139 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.m.S.selectList                     : ==>  Preparing: SELECT sno,cno,tno,passed FROM sct 
+2022-07-07 21:59:42.139 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.m.S.selectList                     : ==> Parameters: 
+2022-07-07 21:59:42.142 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.m.S.selectList                     : <==      Total: 4
+2022-07-07 21:59:42.143 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.CourseMapper.selectOne      : ==>  Preparing: SELECT cno,cname,averagestar,credit,cintroduction,cpicture,kno FROM course WHERE (cno = ?) 
+2022-07-07 21:59:42.143 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.CourseMapper.selectOne      : ==> Parameters: 10001(Integer)
+2022-07-07 21:59:42.145 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.CourseMapper.selectOne      : <==      Total: 1
+2022-07-07 21:59:42.147 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.CourseMapper.selectOne      : ==>  Preparing: SELECT cno,cname,averagestar,credit,cintroduction,cpicture,kno FROM course WHERE (cno = ?) 
+2022-07-07 21:59:42.147 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.CourseMapper.selectOne      : ==> Parameters: 10002(Integer)
+2022-07-07 21:59:42.149 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.CourseMapper.selectOne      : <==      Total: 1
+2022-07-07 21:59:42.150 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.CourseMapper.selectOne      : ==>  Preparing: SELECT cno,cname,averagestar,credit,cintroduction,cpicture,kno FROM course WHERE (cno = ?) 
+2022-07-07 21:59:42.151 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.CourseMapper.selectOne      : ==> Parameters: 10004(Integer)
+2022-07-07 21:59:42.152 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.CourseMapper.selectOne      : <==      Total: 1
+2022-07-07 21:59:42.153 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.m.S.selectList                     : ==>  Preparing: SELECT sno,cno,tno FROM sctcurrent 
+2022-07-07 21:59:42.153 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.m.S.selectList                     : ==> Parameters: 
+2022-07-07 21:59:42.155 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.m.S.selectList                     : <==      Total: 1
+2022-07-07 21:59:42.157 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.CourseMapper.selectOne      : ==>  Preparing: SELECT cno,cname,averagestar,credit,cintroduction,cpicture,kno FROM course WHERE (cno = ?) 
+2022-07-07 21:59:42.157 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.CourseMapper.selectOne      : ==> Parameters: 10003(Integer)
+2022-07-07 21:59:42.158 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.CourseMapper.selectOne      : <==      Total: 1
+2022-07-07 21:59:42.159 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-07 21:59:42.159 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 1(Integer)
+2022-07-07 21:59:42.161 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-07 21:59:42.162 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-07 21:59:42.163 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 2(Integer)
+2022-07-07 21:59:42.165 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-07 21:59:42.166 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-07 21:59:42.166 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 3(Integer)
+2022-07-07 21:59:42.168 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-07 21:59:42.170 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-07 21:59:42.170 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 4(Integer)
+2022-07-07 21:59:42.172 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-07 21:59:42.173 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-07 21:59:42.173 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 5(Integer)
+2022-07-07 21:59:42.174 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-07 21:59:42.175 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-07 21:59:42.175 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 6(Integer)
+2022-07-07 21:59:42.176 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-07 21:59:42.177 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-07 21:59:42.178 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 7(Integer)
+2022-07-07 21:59:42.180 DEBUG 14968 --- [http-nio-9002-exec-5] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-07 21:59:55.308 DEBUG 14968 --- [http-nio-9002-exec-6] c.t.s.mapper.CourseMapper.selectOne      : ==>  Preparing: SELECT cno,cname,averagestar,credit,cintroduction,cpicture,kno FROM course WHERE (cno = ?) 
+2022-07-07 21:59:55.309 DEBUG 14968 --- [http-nio-9002-exec-6] c.t.s.mapper.CourseMapper.selectOne      : ==> Parameters: 10001(Integer)
+2022-07-07 21:59:55.311 DEBUG 14968 --- [http-nio-9002-exec-6] c.t.s.mapper.CourseMapper.selectOne      : <==      Total: 1
+2022-07-07 21:59:55.313 DEBUG 14968 --- [http-nio-9002-exec-6] c.t.s.mapper.CourseMapper.selectOne      : ==>  Preparing: SELECT cno,cname,averagestar,credit,cintroduction,cpicture,kno FROM course WHERE (cno = ?) 
+2022-07-07 21:59:55.314 DEBUG 14968 --- [http-nio-9002-exec-6] c.t.s.mapper.CourseMapper.selectOne      : ==> Parameters: 10002(Integer)
+2022-07-07 21:59:55.315 DEBUG 14968 --- [http-nio-9002-exec-6] c.t.s.mapper.CourseMapper.selectOne      : <==      Total: 1
+2022-07-07 21:59:55.317 DEBUG 14968 --- [http-nio-9002-exec-6] c.t.s.mapper.CourseMapper.selectOne      : ==>  Preparing: SELECT cno,cname,averagestar,credit,cintroduction,cpicture,kno FROM course WHERE (cno = ?) 
+2022-07-07 21:59:55.318 DEBUG 14968 --- [http-nio-9002-exec-6] c.t.s.mapper.CourseMapper.selectOne      : ==> Parameters: 10004(Integer)
+2022-07-07 21:59:55.320 DEBUG 14968 --- [http-nio-9002-exec-6] c.t.s.mapper.CourseMapper.selectOne      : <==      Total: 1
+2022-07-07 21:59:55.321 DEBUG 14968 --- [http-nio-9002-exec-6] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-07 21:59:55.322 DEBUG 14968 --- [http-nio-9002-exec-6] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 1(Integer)
+2022-07-07 21:59:55.323 DEBUG 14968 --- [http-nio-9002-exec-6] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1

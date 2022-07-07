@@ -18,8 +18,11 @@ public class StudentCreditController {
     @RequestMapping("/credit/allCondition")
     public ServerResult allCondition(Integer no) {
         List<AllConditionVO> list = studentCreditService.getAllCondition(no);
-        ServerResult serverResult = new ServerResult(0, "成功", list);
-        return serverResult;
+        if (list.size() == 0) {
+            return new ServerResult(0, "出错了", list);
+        } else {
+            return new ServerResult(0, "成功", list);
+        }
     }
 
     @RequestMapping("/credit/currentCondition")
