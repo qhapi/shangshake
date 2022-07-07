@@ -27,11 +27,11 @@ CREATE TABLE `appraise` (
   `atime` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `isanonymous` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`ano`)
-) ENGINE=InnoDB AUTO_INCREMENT=20002 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=20014 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `appraise` */
 
-insert  into `appraise`(`ano`,`acontent`,`astar`,`atime`,`isanonymous`) values (20001,'课程/教师真心不错',9.5,'2022-07-07 00:20:20',0);
+insert  into `appraise`(`ano`,`acontent`,`astar`,`atime`,`isanonymous`) values (20001,'课程/教师真心不错',9.5,'2022-07-07 00:20:20',0),(20002,'jj',1.2,'2022-07-07 10:22:19',0),(20003,'jjj',1.2,'2022-07-07 10:30:26',0),(20004,NULL,2,'2022-07-07 10:44:55',1),(20005,NULL,2,'2022-07-07 10:46:05',1),(20006,'try0abc',2,'2022-07-07 10:53:49',1),(20007,'try0abcd',3,'2022-07-07 11:58:06',1),(20008,'try0abcd',4,'2022-07-07 12:03:25',1),(20009,'e',5,'2022-07-07 16:58:32',1),(20010,'12',1,'2022-07-07 18:25:34',0),(20011,'123',2,'2022-07-07 18:25:51',0),(20012,'llll',10,'2022-07-07 20:38:34',0),(20013,'allll',10,'2022-07-07 20:40:15',0);
 
 /*Table structure for table `course` */
 
@@ -50,7 +50,7 @@ CREATE TABLE `course` (
 
 /*Data for the table `course` */
 
-insert  into `course`(`cno`,`cname`,`averagestar`,`credit`,`cintroduction`,`cpicture`,`kno`) values (10001,'C语言程序设计',9.5,3.5,'C语言是最基础的高级程序设计语言...','001.png',NULL);
+insert  into `course`(`cno`,`cname`,`averagestar`,`credit`,`cintroduction`,`cpicture`,`kno`) values (10001,'C语言程序设计',9.5,3.5,'C语言是最基础的高级程序设计语言...','001.png',1);
 
 /*Table structure for table `ct` */
 
@@ -72,6 +72,8 @@ CREATE TABLE `ct` (
 
 /*Data for the table `ct` */
 
+insert  into `ct`(`cno`,`tno`,`cbeginweek`,`cendweek`,`week`,`section`,`testmethod`,`teachplace`,`teachmethod`,`remark`) values (10001,2005001,1,3,2,1,NULL,NULL,NULL,NULL);
+
 /*Table structure for table `kind` */
 
 DROP TABLE IF EXISTS `kind`;
@@ -80,9 +82,11 @@ CREATE TABLE `kind` (
   `kno` int(11) NOT NULL AUTO_INCREMENT,
   `kname` varchar(255) NOT NULL,
   PRIMARY KEY (`kno`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `kind` */
+
+insert  into `kind`(`kno`,`kname`) values (1,'必修');
 
 /*Table structure for table `sca` */
 
@@ -97,7 +101,7 @@ CREATE TABLE `sca` (
 
 /*Data for the table `sca` */
 
-insert  into `sca`(`sno`,`cno`,`ano`) values (2019001,10001,20001);
+insert  into `sca`(`sno`,`cno`,`ano`) values (2019001,10001,20001),(2019001,10001,20009);
 
 /*Table structure for table `sct` */
 
@@ -150,8 +154,6 @@ CREATE TABLE `specialty` (
 
 /*Data for the table `specialty` */
 
-insert  into `specialty`(`spno`,`spname`) values (1,'软件工程');
-
 /*Table structure for table `spkcredit` */
 
 DROP TABLE IF EXISTS `spkcredit`;
@@ -178,26 +180,28 @@ CREATE TABLE `sta` (
 
 /*Data for the table `sta` */
 
+insert  into `sta`(`sno`,`tno`,`ano`) values (2009001,2005001,20010),(2019001,2005001,20011),(2019001,2005001,20012),(2019001,2005001,20013);
+
 /*Table structure for table `student` */
 
 DROP TABLE IF EXISTS `student`;
 
 CREATE TABLE `student` (
   `sno` int(11) NOT NULL AUTO_INCREMENT,
-  `spno` int(11) DEFAULT NULL COMMENT '专业号',
-  `sname` varchar(255) DEFAULT NULL,
-  `username` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
+  `spno` int(11) NOT NULL COMMENT '专业号',
+  `sname` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `phonenumber` varchar(255) DEFAULT NULL,
   `spicture` varchar(255) DEFAULT NULL,
   `sex` varchar(255) DEFAULT NULL,
-  `grade` varchar(255) DEFAULT NULL,
+  `grade` varchar(255) NOT NULL,
   PRIMARY KEY (`sno`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2147483648 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `student` */
 
-insert  into `student`(`sno`,`spno`,`sname`,`username`,`password`,`phonenumber`,`spicture`,`sex`,`grade`) values (800557,1,'戚桂岳','test','555555','12345674567','23.jpg','男','2019'),(2019001,1,'张三','三德子','123456','19155556666','002.png','男','2019');
+insert  into `student`(`sno`,`spno`,`sname`,`username`,`password`,`phonenumber`,`spicture`,`sex`,`grade`) values (2019001,1,'张三','三德子','123456','19155556666','002.png','男','2019'),(2147483647,1,'李四','inters','123456','18355555555','001.png','男','2019');
 
 /*Table structure for table `teacher` */
 
