@@ -75,6 +75,18 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public boolean addCourseAppraise(StudentCourseAppraiseInsertDTO studentCourseAppraiseInsertDTO) {
-        return false;
+        //插入信息到Appraise表
+        AppraiseDAO appraiseDAO = new AppraiseDAO();
+        BeanUtils.copyProperties(studentCourseAppraiseInsertDTO,appraiseDAO);
+        appraiseDAO.setAcontent(studentCourseAppraiseInsertDTO.getContent());
+        int insertRow = appraiseMapper.insert(appraiseDAO);
+        Integer ano = appraiseDAO.getAno();
+        if(insertRow >= 1){
+            return true;
+
+        }else
+            return false;
+        //插入信息到sca：studentCourseApprase表
+
     }
 }
