@@ -1,6 +1,7 @@
 package com.tedu.shangshake.controller;
 
 import com.tedu.shangshake.pojo.ServerResult;
+import com.tedu.shangshake.pojo.StudentTeacherAppraiseInsertDTO;
 import com.tedu.shangshake.pojo.TeacherAppraiseVO;
 import com.tedu.shangshake.pojo.TeacherDetailVO;
 import com.tedu.shangshake.service.TeacherService;
@@ -25,5 +26,14 @@ public class TeacherController {
         List<TeacherAppraiseVO> teacherAppraise = teacherService.getTeacherAppraise(teacherId);
         ServerResult serverResult = new ServerResult(0, "getTeacherAppraise success",teacherAppraise);
         return serverResult;
+    }
+    @RequestMapping("/teacher/addTeacherAppraise")
+    public ServerResult addTeacherAppraise(StudentTeacherAppraiseInsertDTO studentTeacherAppraiseInsertDTO){
+        boolean b = teacherService.addTeacherAppraise(studentTeacherAppraiseInsertDTO);
+        if(b){
+            return new ServerResult(0,"addTeacherAppraise success",null);
+        }else {
+            return new ServerResult(1,"addTeacherAppraise fail",null);
+        }
     }
 }

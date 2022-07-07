@@ -34,8 +34,33 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public boolean addTeacherAppraise(StudentTeacherAppraiseInsertDTO studentTeacherAppraiseInsertDTO) {
+        //插入信息到Appraise表
+        AppraiseDAO appraiseDAO = new AppraiseDAO();
+        BeanUtils.copyProperties(studentTeacherAppraiseInsertDTO,appraiseDAO);
+        appraiseDAO.setAcontent(studentTeacherAppraiseInsertDTO.getContent());
+        int insertRow = appraiseMapper.insert(appraiseDAO);
 
-        return false;
+        QueryWrapper maxid = new QueryWrapper();
+        maxid.orderByDesc("ano");
+        List<AppraiseDAO> maxids= appraiseMapper.selectList(maxid);
+
+        if(insertRow >= 1){
+            //插入信息到sta：studentTeacherApprase表
+            StudentTeacherAppraiseDAO studentTeacherAppraiseDAO = new StudentTeacherAppraiseDAO();
+            BeanUtils.copyProperties(studentTeacherAppraiseInsertDTO,studentTeacherAppraiseDAO);
+            studentTeacherAppraiseDAO.setAno(maxids.get(0).getAno());
+            int insert = studentTeacherAppraiseMapper.insert(studentTeacherAppraiseDAO);
+            if(insert>=1){
+                return true;
+            }else {
+                //删除插入的评价信息
+                QueryWrapper deleteAppraise = new QueryWrapper();
+                deleteAppraise.eq("ano",maxids.get(0).getAno());
+                appraiseMapper.delete(deleteAppraise);
+                return false;
+            }
+        }else
+            return false;
     }
 
     @Override
