@@ -91,6 +91,12 @@ public class StudentCreditServiceImpl implements StudentCreditService {
             Float creditSum = kindCurrCreditMap.get(kind) + credit;
             kindCurrCreditMap.put(kind, creditSum);
         }
+        //总计行
+        AllConditionVO sumCreditVO = new AllConditionVO();
+        sumCreditVO.setkName("总计");
+        Float sumAllCredit = 0.0f;
+        Float sumHistoryCredit = 0.0f;
+        Float sumCurrentCredit = 0.0f;
 
         //遍历类型（从spkcDAOList定义的地方移了过来）
         for (SpecialtyKindCreditDAO spkcDAO : spkcDAOList) {
@@ -105,8 +111,16 @@ public class StudentCreditServiceImpl implements StudentCreditService {
             //将kindCreditMap中的分数加到已修学分中
             acVO.setHistoryCredit(kindCreditMap.get(spkcDAO.getKno()));
             acVO.setCurrentCredit(kindCurrCreditMap.get(spkcDAO.getKno()));
+            sumAllCredit += spkcDAO.getCredit();
+            sumHistoryCredit += kindCreditMap.get(spkcDAO.getKno());
+            sumCurrentCredit += kindCurrCreditMap.get(spkcDAO.getKno());
             voList.add(acVO);
         }
+
+        sumCreditVO.setAllCredit(sumAllCredit);
+        sumCreditVO.setHistoryCredit(sumHistoryCredit);
+        sumCreditVO.setCurrentCredit(sumCurrentCredit);
+        voList.add(sumCreditVO);
 
         this.cPassMap = cPassMap;
         this.allConditionVOList = voList;
