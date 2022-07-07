@@ -186,20 +186,20 @@ DROP TABLE IF EXISTS `student`;
 
 CREATE TABLE `student` (
   `sno` int(11) NOT NULL AUTO_INCREMENT,
-  `spno` int(11) NOT NULL COMMENT '专业号',
-  `sname` varchar(255) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `spno` int(11) DEFAULT NULL COMMENT '专业号',
+  `sname` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `phonenumber` varchar(255) DEFAULT NULL,
   `spicture` varchar(255) DEFAULT NULL,
   `sex` varchar(255) DEFAULT NULL,
-  `grade` varchar(255) NOT NULL,
+  `grade` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`sno`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2147483648 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `student` */
 
-insert  into `student`(`sno`,`spno`,`sname`,`username`,`password`,`phonenumber`,`spicture`,`sex`,`grade`) values (2019001,1,'张三','三德子','123456','19155556666','002.png','男','2019'),(2147483647,1,'李四','inters','123456','18355555555','001.png','男','2019');
+insert  into `student`(`sno`,`spno`,`sname`,`username`,`password`,`phonenumber`,`spicture`,`sex`,`grade`) values (800557,1,'戚桂岳','qhapi','666666','18353807985',NULL,'男','2019'),(2019001,1,'张三','三德子','123456','19155556666','002.png','男','2019');
 
 /*Table structure for table `teacher` */
 

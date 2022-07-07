@@ -11,6 +11,8 @@ public class StudentDAO {
     String password;
     String phonenumber;
     String spicture;
+    String sex;
+    String grade;
 
     public String getPhonenumber() {
         return phonenumber;
@@ -27,9 +29,6 @@ public class StudentDAO {
     public void setSpicture(String spicture) {
         this.spicture = spicture;
     }
-
-    String sex;
-    String grade;
 
     public Integer getSno() {
         return sno;

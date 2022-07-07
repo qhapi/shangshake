@@ -1,7 +1,11 @@
 package com.tedu.shangshake.service;
 
-import com.tedu.shangshake.pojo.StudentDTO;
+import com.tedu.shangshake.pojo.*;
 
 public interface StudentService {
-    Integer login(StudentDTO studentDTO);
+    Integer login(StudentLoginDTO studentLoginDTO);
+    Integer register(StudentRegisterDTO studentRegisterDTO);
+    StudentVO getStudentInfo(Integer sno);
+    Boolean changePassword(StudentChangePasswordDTO studentChangePasswordDTO);
+    Boolean updateStudentInfo(StudentUpdateDTO studentUpdateDTO);
 }
