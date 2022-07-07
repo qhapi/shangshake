@@ -1,10 +1,7 @@
 package com.tedu.shangshake.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.tedu.shangshake.mapper.AppraiseMapper;
-import com.tedu.shangshake.mapper.CourseMapper;
-import com.tedu.shangshake.mapper.KindMapper;
-import com.tedu.shangshake.mapper.TeacherMapper;
+import com.tedu.shangshake.mapper.*;
 import com.tedu.shangshake.pojo.*;
 import com.tedu.shangshake.service.CourseService;
 import org.springframework.beans.BeanUtils;
@@ -25,6 +22,8 @@ public class CourseServiceImpl implements CourseService {
     AppraiseMapper appraiseMapper;
     @Autowired
     KindMapper kindMapper;
+    @Autowired
+    CourseTeacherMapper courseTeacherMapper;
 
     @Override
     public List<CourseVO> getCourse() {
@@ -48,17 +47,26 @@ public class CourseServiceImpl implements CourseService {
     public List<CourseDetailVO> getCourseDetail(Integer courseId) {
         //获取课程的基本信息
         QueryWrapper courseInfoQW = new QueryWrapper();
-        courseInfoQW.eq("no",courseId);
+        courseInfoQW.eq("cno",courseId);
         CourseDAO courseDAO = courseMapper.selectOne(courseInfoQW);
         //根据courseId在教师课程表中找教师课程list
         QueryWrapper tcListQW = new QueryWrapper();
-        tcListQW.eq("cNo",courseDAO.getCno());
-        List<CourseTeacherDAO> courseTeacherDAOList=courseMapper.selectList(tcListQW);
+        tcListQW.eq("cno",courseDAO.getCno());
+        List<CourseTeacherDAO> courseTeacherDAOList=courseTeacherMapper.selectList(tcListQW);
+
         List<CourseDetailVO> courseDetailVOList = new LinkedList<>();
+
         for(CourseTeacherDAO courseTeacherDAO:courseTeacherDAOList){
             CourseDetailVO courseDetailVO = new CourseDetailVO();
             BeanUtils.copyProperties(courseDAO,courseDetailVO);
             BeanUtils.copyProperties(courseTeacherDAO,courseDetailVO);
+            //根据tno获取tname
+            QueryWrapper getTnameQW = new QueryWrapper();
+            getTnameQW.eq("tno",courseTeacherDAO.getTno());
+            TeacherDAO teacherDAO = teacherMapper.selectOne(getTnameQW);
+
+            courseDetailVO.setTname(teacherDAO.getTname());
+
             courseDetailVOList.add(courseDetailVO);
         }
 
