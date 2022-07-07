@@ -56,7 +56,7 @@ public class CourseServiceImpl implements CourseService {
         tcListQW.eq("cno",courseDAO.getCno());
         List<CourseTeacherDAO> courseTeacherDAOList=courseTeacherMapper.selectList(tcListQW);
 
-        List<CourseDetailVO> courseDetailVOList = new LinkedList<>();
+        ArrayList<CourseDetailVO> courseDetailVOList = new ArrayList<>();
 
         for(CourseTeacherDAO courseTeacherDAO:courseTeacherDAOList){
             CourseDetailVO courseDetailVO = new CourseDetailVO();
@@ -82,11 +82,11 @@ public class CourseServiceImpl implements CourseService {
         BeanUtils.copyProperties(studentCourseAppraiseInsertDTO,appraiseDAO);
         appraiseDAO.setAcontent(studentCourseAppraiseInsertDTO.getContent());
         int insertRow = appraiseMapper.insert(appraiseDAO);
-        Integer ano = appraiseDAO.getAno();
+
         QueryWrapper maxid = new QueryWrapper();
         maxid.orderByDesc("ano");
         List<AppraiseDAO> maxids= appraiseMapper.selectList(maxid);
-//        Integer jj = maxids.get(0).getAno();
+
         if(insertRow >= 1){
             //插入信息到sca：studentCourseApprase表
             StudentCourseAppraiseDAO studentCourseAppraiseDAO = new StudentCourseAppraiseDAO();
@@ -106,5 +106,25 @@ public class CourseServiceImpl implements CourseService {
             return false;
 
 
+    }
+
+    @Override
+    public List<AppraiseVO> getCourseAppraise(Integer courseId) {
+        //获取到课程的评论ano集合
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("cno",courseId);
+        List<StudentCourseAppraiseDAO> studentCourseAppraiseDAOS = studentCourseAppraiseMapper.selectList(queryWrapper);
+        //获取评价详细信息
+        ArrayList<AppraiseVO> appraiseVOList = new ArrayList<>();
+        for(StudentCourseAppraiseDAO studentCourseAppraiseDAO:studentCourseAppraiseDAOS){
+            QueryWrapper appraiseDetailQW = new QueryWrapper();
+            appraiseDetailQW.eq("ano",studentCourseAppraiseDAO.getAno());
+            AppraiseDAO appraiseDAO = appraiseMapper.selectOne(appraiseDetailQW);
+
+            AppraiseVO appraiseVO = new AppraiseVO();
+            BeanUtils.copyProperties(appraiseDAO,appraiseVO);
+            appraiseVOList.add(appraiseVO);
+        }
+        return appraiseVOList;
     }
 }
