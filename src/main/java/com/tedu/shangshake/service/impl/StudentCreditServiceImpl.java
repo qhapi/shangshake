@@ -150,10 +150,11 @@ public class StudentCreditServiceImpl implements StudentCreditService {
         vo.setkName(kName);
 
         for (AllConditionVO acVO : allConditionVOList) {
-            if (acVO.getkName() == kName) {
+            if (acVO.getkName().equals(vo.getkName())) {
                 vo.setAllCredit(acVO.getAllCredit());
                 vo.setHistoryCredit(acVO.getHistoryCredit());
                 vo.setCurrentCredit(acVO.getCurrentCredit());
+                break;
             }
         }
 

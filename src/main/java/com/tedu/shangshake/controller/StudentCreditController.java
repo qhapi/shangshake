@@ -1,9 +1,6 @@
 package com.tedu.shangshake.controller;
 
-import com.tedu.shangshake.pojo.AllConditionVO;
-import com.tedu.shangshake.pojo.CurrentConditionDTO;
-import com.tedu.shangshake.pojo.CurrentConditionVO;
-import com.tedu.shangshake.pojo.ServerResult;
+import com.tedu.shangshake.pojo.*;
 import com.tedu.shangshake.service.StudentCreditService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,8 +26,11 @@ public class StudentCreditController {
     public ServerResult currentCondition(CurrentConditionDTO dto) {
         List<CurrentConditionVO> list = studentCreditService.getCurrentCondition(dto);
         AllConditionVO conTitle = studentCreditService.getConditionTitle(dto);
+        CurrentConditionTitleVO ccTitleVO = new CurrentConditionTitleVO();
+        ccTitleVO.setVoList(list);
+        ccTitleVO.setTitle(conTitle);
 
-        ServerResult serverResult = new ServerResult(0, "成功", new Object[] {conTitle, list});
+        ServerResult serverResult = new ServerResult(0, "成功", ccTitleVO);
         return serverResult;
     }
 }
