@@ -28,7 +28,9 @@ public class StudentCreditController {
     @RequestMapping("/credit/currentCondition")
     public ServerResult currentCondition(CurrentConditionDTO dto) {
         List<CurrentConditionVO> list = studentCreditService.getCurrentCondition(dto);
-        ServerResult serverResult = new ServerResult(0, "成功", list);
+        AllConditionVO conTitle = studentCreditService.getConditionTitle(dto);
+
+        ServerResult serverResult = new ServerResult(0, "成功", new Object[] {conTitle, list});
         return serverResult;
     }
 }

@@ -30,6 +30,7 @@ public class StudentCreditServiceImpl implements StudentCreditService {
     StudentCourseTeacherCurrentMapper studentCourseTeacherCurrentMapper;
 
     Map<Integer, Integer> cPassMap;
+    ArrayList<AllConditionVO> allConditionVOList;
 
     //输入学生no，返回学生的总的学分修读情况。
     //QueryWrapper并不能真正的多表查询。
@@ -39,7 +40,7 @@ public class StudentCreditServiceImpl implements StudentCreditService {
 
         //先通过student表查出专业号
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("no", no);
+        queryWrapper.eq("sno", no);
         StudentDAO studentDAO = studentMapper.selectOne(queryWrapper);
         Integer spNo = studentDAO.getSpno();
         //再通过专业号查出专业对应的总学分列表
@@ -67,7 +68,7 @@ public class StudentCreditServiceImpl implements StudentCreditService {
             if (passed == 1) {
                 //如果通过，找到课程类型编号
                 queryWrapper = new QueryWrapper();
-                queryWrapper.eq("no", cno);
+                queryWrapper.eq("cno", cno);
                 CourseDAO courseDAO = courseMapper.selectOne(queryWrapper);
                 Integer kind = courseDAO.getKno();
                 Float credit = courseDAO.getCredit();
@@ -83,7 +84,7 @@ public class StudentCreditServiceImpl implements StudentCreditService {
         List<StudentCourseTeacherCurrentDAO> sctCurrDAOList = studentCourseTeacherCurrentMapper.selectList(null);
         for (StudentCourseTeacherCurrentDAO sctCurrDAO : sctCurrDAOList) {
             queryWrapper = new QueryWrapper();
-            queryWrapper.eq("no", sctCurrDAO.getCno());
+            queryWrapper.eq("cno", sctCurrDAO.getCno());
             CourseDAO courseDAO = courseMapper.selectOne(queryWrapper);
             Integer kind = courseDAO.getKno();
             Float credit = courseDAO.getCredit();
@@ -95,11 +96,11 @@ public class StudentCreditServiceImpl implements StudentCreditService {
         for (SpecialtyKindCreditDAO spkcDAO : spkcDAOList) {
             //查询出类型名
             queryWrapper = new QueryWrapper();
-            queryWrapper.eq("no", spkcDAO.getKno());
+            queryWrapper.eq("kno", spkcDAO.getKno());
             KindDAO kindDAO = kindMapper.selectOne(queryWrapper);
 
             AllConditionVO acVO = new AllConditionVO();
-            acVO.setkName(kindDAO.getKname());//设置专业名
+            acVO.setkName(kindDAO.getKname());//设置类型名
             acVO.setAllCredit(spkcDAO.getCredit());//设置总学分
             //将kindCreditMap中的分数加到已修学分中
             acVO.setHistoryCredit(kindCreditMap.get(spkcDAO.getKno()));
@@ -108,6 +109,7 @@ public class StudentCreditServiceImpl implements StudentCreditService {
         }
 
         this.cPassMap = cPassMap;
+        this.allConditionVOList = voList;
 
         return voList;
     }
@@ -120,7 +122,7 @@ public class StudentCreditServiceImpl implements StudentCreditService {
         //this.cPassMap中有该学生所有已选课程的是否通过情况。
         for (Integer cno : this.cPassMap.keySet()) {
             QueryWrapper queryWrapper = new QueryWrapper();
-            queryWrapper.eq("no", cno);
+            queryWrapper.eq("cno", cno);
             CourseDAO courseDAO = courseMapper.selectOne(queryWrapper);
             CurrentConditionVO vo = new CurrentConditionVO();
             vo.setNo(cno);
@@ -134,5 +136,27 @@ public class StudentCreditServiceImpl implements StudentCreditService {
         }
 
         return voList;
+    }
+
+    //返回指定类型课程修读页面的标题
+    @Override
+    public AllConditionVO getConditionTitle(CurrentConditionDTO dto) {
+        AllConditionVO vo = new AllConditionVO();
+        //查出dto中kno对应的类型名
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("kno", dto.kNo);
+        KindDAO kindDAO = kindMapper.selectOne(queryWrapper);
+        String kName = kindDAO.getKname();
+        vo.setkName(kName);
+
+        for (AllConditionVO acVO : allConditionVOList) {
+            if (acVO.getkName() == kName) {
+                vo.setAllCredit(acVO.getAllCredit());
+                vo.setHistoryCredit(acVO.getHistoryCredit());
+                vo.setCurrentCredit(acVO.getCurrentCredit());
+            }
+        }
+
+        return vo;
     }
 }

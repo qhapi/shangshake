@@ -9,4 +9,5 @@ import java.util.List;
 public interface StudentCreditService {
     List<AllConditionVO> getAllCondition(Integer no);
     List<CurrentConditionVO> getCurrentCondition(CurrentConditionDTO dto);
+    AllConditionVO getConditionTitle(CurrentConditionDTO dto);
 }
