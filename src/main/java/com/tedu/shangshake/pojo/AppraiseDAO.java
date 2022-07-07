@@ -3,13 +3,14 @@ package com.tedu.shangshake.pojo;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.sql.Time;
+import java.util.Date;
 
 @TableName("appraise")
 public class AppraiseDAO {
     Integer ano;
     String acontent;
     Float astar;
-    Time atime;
+    Date atime;
     Boolean isanonymous;
 
 
@@ -37,11 +38,11 @@ public class AppraiseDAO {
         this.astar = astar;
     }
 
-    public Time getAtime() {
+    public Date getAtime() {
         return atime;
     }
 
-    public void setAtime(Time atime) {
+    public void setAtime(Date atime) {
         this.atime = atime;
     }
 

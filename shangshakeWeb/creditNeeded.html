@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--
+		<meta charset="utf-8">
+		<title></title>
+		-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>Document</title>
+		<link rel="stylesheet" href="bootstrap-3.4.1-dist/css/bootstrap.min.css">
+		<script src="jquery.min.js"></script>
+		<script src="bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<div class="page-header">
+						<h1>
+							上啥课
+						</h1>
+					</div>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-3 column">
+					<p class="nav-header">
+					</p>
+					<ul class="nav nav-list">
+						<li class="active">
+							<a href="#">首页</a>
+						</li>
+						<li>
+							<a href="#">我的课程</a>
+						</li>
+						<li>
+							<a href="#">需修课程</a>
+						</li>
+						<li>
+							<a href="#">课程信息</a>
+						</li>
+						<li>
+							<a href="#">个人资料</a>
+						</li>
+						<li class="divider">
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-9 column">
+					<p>
+						需修学分
+					</p>
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>
+									课程类型
+								</th>
+								<th>
+									要求学分
+								</th>
+								<th>
+									已修读学分
+								</th>
+								<th>
+									正修读学分
+								</th>
+								<th>
+									还需学分
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>
+									学科基础平台课程(必修)
+								</th>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									<span>通识教育选修课(公选)</span>
+								</th>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									通识教育核心课(公选)
+								</th>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									通识教育必修课(必修)
+								</th>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									专业必修课程(必修)
+								</th>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									实践环节(必修)
+								</th>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									专业选修课程(限选)
+								</th>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									总计
+								</th>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									其他课程
+								</th>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+	
+	<script src="vue.js"></script>
+	<script src="axios.min.js"></script>
+	<script src="const.js"></script>
+	<script>
+		var config={
+			"el":"#app",
+			"data":{"item":{}},//{}表示对象
+			"mounted":function(){
+				//itemDetail.html?id=1
+				//location表示地址栏
+				debugger
+				var p=location.search//?id=1
+				var array=p.split("=")//以“=”做字符串分割 [0]=?id [1]=1
+				var id=array[1]
+				console.log(id)
+				
+				var url=serverUrl+"/item/selectById?id="+id
+				axios.get(url)
+				.then(function(response){
+					var serverResult=response.data
+					var item=serverResult.data
+					this.vue.item=item
+				})
+				.catch()
+			}
+		}
+		var vue=new Vue(config)
+	</script>
+</html>

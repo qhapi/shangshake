@@ -130,7 +130,7 @@ public class StudentCreditServiceImpl implements StudentCreditService {
             vo.setAverageStar(courseDAO.getAveragestar());
             vo.setCredit(courseDAO.getCredit());
             vo.setIntroduction(courseDAO.getCintroduction());
-            vo.setPicture(courseDAO.getCpictrue());
+            vo.setPicture(courseDAO.getCpicture());
             vo.setPassed(this.cPassMap.get(cno));
             voList.add(vo);
         }

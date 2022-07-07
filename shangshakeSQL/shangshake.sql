@@ -24,14 +24,14 @@ CREATE TABLE `appraise` (
   `ano` int(11) NOT NULL AUTO_INCREMENT,
   `acontent` varchar(255) DEFAULT NULL,
   `astar` float NOT NULL,
-  `atime` time NOT NULL,
+  `atime` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `isanonymous` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`ano`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20002 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `appraise` */
 
-insert  into `appraise`(`ano`,`acontent`,`astar`,`atime`,`isanonymous`) values (20001,'课程/教师真心不错',9.5,'00:20:20',0);
+insert  into `appraise`(`ano`,`acontent`,`astar`,`atime`,`isanonymous`) values (20001,'课程/教师真心不错',9.5,'2022-07-07 00:20:20',0);
 
 /*Table structure for table `course` */
 
@@ -150,6 +150,8 @@ CREATE TABLE `specialty` (
 
 /*Data for the table `specialty` */
 
+insert  into `specialty`(`spno`,`spname`) values (1,'软件工程');
+
 /*Table structure for table `spkcredit` */
 
 DROP TABLE IF EXISTS `spkcredit`;
@@ -195,7 +197,7 @@ CREATE TABLE `student` (
 
 /*Data for the table `student` */
 
-insert  into `student`(`sno`,`spno`,`sname`,`username`,`password`,`phonenumber`,`spicture`,`sex`,`grade`) values (800557,1,'戚桂岳','qhapi','666666','18353807985',NULL,'男','2019'),(2019001,1,'张三','三德子','123456','19155556666','002.png','男','2019');
+insert  into `student`(`sno`,`spno`,`sname`,`username`,`password`,`phonenumber`,`spicture`,`sex`,`grade`) values (800557,1,'戚桂岳','test','555555','12345674567','23.jpg','男','2019'),(2019001,1,'张三','三德子','123456','19155556666','002.png','男','2019');
 
 /*Table structure for table `teacher` */
 
