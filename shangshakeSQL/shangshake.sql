@@ -24,14 +24,14 @@ CREATE TABLE `appraise` (
   `ano` int(11) NOT NULL AUTO_INCREMENT,
   `acontent` varchar(255) DEFAULT NULL,
   `astar` float NOT NULL,
-  `atime` time NOT NULL,
+  `atime` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `isanonymous` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`ano`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20002 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `appraise` */
 
-insert  into `appraise`(`ano`,`acontent`,`astar`,`atime`,`isanonymous`) values (20001,'课程/教师真心不错',9.5,'00:20:20',0);
+insert  into `appraise`(`ano`,`acontent`,`astar`,`atime`,`isanonymous`) values (20001,'课程/教师真心不错',9.5,'2022-07-07 00:20:20',0);
 
 /*Table structure for table `course` */
 
@@ -50,7 +50,7 @@ CREATE TABLE `course` (
 
 /*Data for the table `course` */
 
-insert  into `course`(`cno`,`cname`,`averagestar`,`credit`,`cintroduction`,`cpicture`,`kno`) values (10001,'C语言程序设计',9.5,3.5,'C语言是最基础的高级程序设计语言...','001.png',NULL);
+insert  into `course`(`cno`,`cname`,`averagestar`,`credit`,`cintroduction`,`cpicture`,`kno`) values (10001,'C语言程序设计',9.5,3.5,'C语言是最基础的高级程序设计语言...','001.png',1);
 
 /*Table structure for table `ct` */
 
@@ -72,6 +72,8 @@ CREATE TABLE `ct` (
 
 /*Data for the table `ct` */
 
+insert  into `ct`(`cno`,`tno`,`cbeginweek`,`cendweek`,`week`,`section`,`testmethod`,`teachplace`,`teachmethod`,`remark`) values (10001,2005001,1,3,2,1,NULL,NULL,NULL,NULL);
+
 /*Table structure for table `kind` */
 
 DROP TABLE IF EXISTS `kind`;
@@ -80,9 +82,11 @@ CREATE TABLE `kind` (
   `kno` int(11) NOT NULL AUTO_INCREMENT,
   `kname` varchar(255) NOT NULL,
   PRIMARY KEY (`kno`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `kind` */
+
+insert  into `kind`(`kno`,`kname`) values (1,'必修');
 
 /*Table structure for table `sca` */
 
