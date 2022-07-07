@@ -50,7 +50,7 @@ CREATE TABLE `course` (
 
 /*Data for the table `course` */
 
-insert  into `course`(`cno`,`cname`,`averagestar`,`credit`,`cintroduction`,`cpicture`,`kno`) values (10001,'C语言程序设计',9.5,3.5,'C语言是最基础的高级程序设计语言...','001.png',1);
+insert  into `course`(`cno`,`cname`,`averagestar`,`credit`,`cintroduction`,`cpicture`,`kno`) values (10001,'C语言程序设计',9.5,3.5,'C语言是最基础的高级程序设计语言...','001.png',NULL);
 
 /*Table structure for table `ct` */
 
@@ -72,8 +72,6 @@ CREATE TABLE `ct` (
 
 /*Data for the table `ct` */
 
-insert  into `ct`(`cno`,`tno`,`cbeginweek`,`cendweek`,`week`,`section`,`testmethod`,`teachplace`,`teachmethod`,`remark`) values (10001,2005001,1,3,2,1,NULL,NULL,NULL,NULL);
-
 /*Table structure for table `kind` */
 
 DROP TABLE IF EXISTS `kind`;
@@ -82,11 +80,9 @@ CREATE TABLE `kind` (
   `kno` int(11) NOT NULL AUTO_INCREMENT,
   `kname` varchar(255) NOT NULL,
   PRIMARY KEY (`kno`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `kind` */
-
-insert  into `kind`(`kno`,`kname`) values (1,'必修');
 
 /*Table structure for table `sca` */
 
@@ -154,6 +150,8 @@ CREATE TABLE `specialty` (
 
 /*Data for the table `specialty` */
 
+insert  into `specialty`(`spno`,`spname`) values (1,'软件工程');
+
 /*Table structure for table `spkcredit` */
 
 DROP TABLE IF EXISTS `spkcredit`;
@@ -199,7 +197,7 @@ CREATE TABLE `student` (
 
 /*Data for the table `student` */
 
-insert  into `student`(`sno`,`spno`,`sname`,`username`,`password`,`phonenumber`,`spicture`,`sex`,`grade`) values (800557,1,'戚桂岳','qhapi','666666','18353807985',NULL,'男','2019'),(2019001,1,'张三','三德子','123456','19155556666','002.png','男','2019');
+insert  into `student`(`sno`,`spno`,`sname`,`username`,`password`,`phonenumber`,`spicture`,`sex`,`grade`) values (800557,1,'戚桂岳','test','555555','12345674567','23.jpg','男','2019'),(2019001,1,'张三','三德子','123456','19155556666','002.png','男','2019');
 
 /*Table structure for table `teacher` */
 

@@ -3,12 +3,14 @@ package com.tedu.shangshake.controller;
 import com.tedu.shangshake.pojo.*;
 import com.tedu.shangshake.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 戚桂岳负责
  */
+@CrossOrigin
 @RestController
 public class StudentController {
     @Autowired
