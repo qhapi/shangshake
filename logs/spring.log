@@ -1060,3 +1060,30 @@ java.lang.NullPointerException: null
 2022-07-07 08:02:23.251 DEBUG 4884 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
 2022-07-07 08:02:23.252 DEBUG 4884 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 1(Integer)
 2022-07-07 08:02:23.253 DEBUG 4884 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-07 08:08:48.512  INFO 11436 --- [main] c.tedu.shangshake.ShangshakeApplication  : Starting ShangshakeApplication on wenkang with PID 11436 (C:\Users\wenkang\Desktop\shangshake\target\classes started by wenkang in C:\Users\wenkang\Desktop\shangshake)
+2022-07-07 08:08:48.516 DEBUG 11436 --- [main] c.tedu.shangshake.ShangshakeApplication  : Running with Spring Boot v2.3.7.RELEASE, Spring v5.2.12.RELEASE
+2022-07-07 08:08:48.517  INFO 11436 --- [main] c.tedu.shangshake.ShangshakeApplication  : No active profile set, falling back to default profiles: default
+2022-07-07 08:08:49.800  INFO 11436 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9002 (http)
+2022-07-07 08:08:49.807  INFO 11436 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-07-07 08:08:49.808  INFO 11436 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2022-07-07 08:08:49.909  INFO 11436 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-07-07 08:08:49.909  INFO 11436 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1338 ms
+2022-07-07 08:08:50.995  WARN 11436 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.CourseDAO.
+2022-07-07 08:08:51.106  WARN 11436 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.TeacherDAO.
+2022-07-07 08:08:51.132  WARN 11436 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.AppraiseDAO.
+2022-07-07 08:08:51.153  WARN 11436 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.KindDAO.
+2022-07-07 08:08:51.179  WARN 11436 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentDAO.
+2022-07-07 08:08:51.400  INFO 11436 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2022-07-07 08:08:51.464  INFO 11436 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-07-07 08:08:51.640  WARN 11436 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.CourseTeacherDAO.
+2022-07-07 08:08:51.657  WARN 11436 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.SpecialtyCourseDAO.
+2022-07-07 08:08:51.672  WARN 11436 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.SpecialtyKindCreditDAO.
+2022-07-07 08:08:51.693  WARN 11436 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.SpecialtyDAO.
+2022-07-07 08:08:51.707  WARN 11436 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentCourseAppraiseDAO.
+2022-07-07 08:08:51.723  WARN 11436 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentCourseTeacherCurrentDAO.
+2022-07-07 08:08:51.740  WARN 11436 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentCourseTeacherDAO.
+2022-07-07 08:08:51.804  INFO 11436 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9002 (http) with context path ''
+2022-07-07 08:08:51.805  INFO 11436 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Documentation plugins bootstrapped
+2022-07-07 08:08:51.808  INFO 11436 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-07-07 08:08:51.832  INFO 11436 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-07-07 08:08:51.982  INFO 11436 --- [main] c.tedu.shangshake.ShangshakeApplication  : Started ShangshakeApplication in 3.983 seconds (JVM running for 5.193)

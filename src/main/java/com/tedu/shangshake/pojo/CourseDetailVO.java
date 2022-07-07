@@ -6,6 +6,9 @@ public class CourseDetailVO {
     Float credit;
     String cintroduction;
     String cpicture;
+
+    Integer tno;
+    String tname;
     Integer cbeginweek;
     Integer cendweek;
     Integer week;
@@ -14,6 +17,22 @@ public class CourseDetailVO {
     String teachplace;
     String teachmethod;
     String remark;
+
+    public Integer getTno() {
+        return tno;
+    }
+
+    public void setTno(Integer tno) {
+        this.tno = tno;
+    }
+
+    public String getTname() {
+        return tname;
+    }
+
+    public void setTname(String tname) {
+        this.tname = tname;
+    }
 
     public String getCname() {
         return cname;
