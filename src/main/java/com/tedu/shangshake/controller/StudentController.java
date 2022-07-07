@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * 戚桂岳负责
  */
@@ -63,5 +65,11 @@ public class StudentController {
             return new ServerResult(0,"success", true);
         else
             return new ServerResult(-1,"failed",false);
+    }
+
+    @RequestMapping("/getSelfCourseTable")
+    public  ServerResult getSelfCourseTable(Integer sno){
+        List<SelfCourseVO> selfCourseTable = studentService.getSelfCourseTable(sno);
+        return new ServerResult(0,"success", selfCourseTable);
     }
 }
