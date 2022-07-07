@@ -24,6 +24,8 @@ public class CourseServiceImpl implements CourseService {
     KindMapper kindMapper;
     @Autowired
     CourseTeacherMapper courseTeacherMapper;
+    @Autowired
+    StudentCourseAppraiseMapper studentCourseAppraiseMapper;
 
     @Override
     public List<CourseVO> getCourse() {
@@ -81,12 +83,28 @@ public class CourseServiceImpl implements CourseService {
         appraiseDAO.setAcontent(studentCourseAppraiseInsertDTO.getContent());
         int insertRow = appraiseMapper.insert(appraiseDAO);
         Integer ano = appraiseDAO.getAno();
+        QueryWrapper maxid = new QueryWrapper();
+        maxid.orderByDesc("ano");
+        List<AppraiseDAO> maxids= appraiseMapper.selectList(maxid);
+//        Integer jj = maxids.get(0).getAno();
         if(insertRow >= 1){
-            return true;
-
+            //插入信息到sca：studentCourseApprase表
+            StudentCourseAppraiseDAO studentCourseAppraiseDAO = new StudentCourseAppraiseDAO();
+            BeanUtils.copyProperties(studentCourseAppraiseInsertDTO,studentCourseAppraiseDAO);
+            studentCourseAppraiseDAO.setAno(maxids.get(0).getAno());
+            int insert = studentCourseAppraiseMapper.insert(studentCourseAppraiseDAO);
+            if(insert>=1){
+                return true;
+            }else {
+                //删除插入的评价信息
+                QueryWrapper deleteAppraise = new QueryWrapper();
+                deleteAppraise.eq("ano",maxids.get(0).getAno());
+                appraiseMapper.delete(deleteAppraise);
+                return false;
+            }
         }else
             return false;
-        //插入信息到sca：studentCourseApprase表
+
 
     }
 }
