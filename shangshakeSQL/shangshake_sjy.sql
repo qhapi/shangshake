@@ -46,11 +46,11 @@ CREATE TABLE `course` (
   `cpicture` varchar(255) DEFAULT NULL,
   `kno` int(11) DEFAULT NULL,
   PRIMARY KEY (`cno`)
-) ENGINE=InnoDB AUTO_INCREMENT=10004 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10005 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `course` */
 
-insert  into `course`(`cno`,`cname`,`averagestar`,`credit`,`cintroduction`,`cpicture`,`kno`) values (10001,'C语言程序设计',9.5,3.5,'C语言是最基础的高级程序设计语言...','001.png',1),(10002,'数据库课程设计',9.3,3,'123','002.png',1),(10003,'操作系统',9.4,4,'234','003.png',1);
+insert  into `course`(`cno`,`cname`,`averagestar`,`credit`,`cintroduction`,`cpicture`,`kno`) values (10001,'C语言程序设计',9.5,3.5,'C语言是最基础的高级程序设计语言...','001.png',1),(10002,'数据库课程设计',9.3,3,'123','002.png',1),(10003,'操作系统',9.4,4,'234','003.png',1),(10004,'Java程序设计',9.2,3.5,'333','004.png',7);
 
 /*Table structure for table `ct` */
 
@@ -115,7 +115,7 @@ CREATE TABLE `sct` (
 
 /*Data for the table `sct` */
 
-insert  into `sct`(`sno`,`cno`,`tno`,`passed`) values (2019001,10001,2005001,1),(2019001,10002,2005001,1);
+insert  into `sct`(`sno`,`cno`,`tno`,`passed`) values (2019001,10001,2005001,1),(2019001,10002,2005001,1),(2019501,10001,2005001,1),(2019501,10004,2005001,1);
 
 /*Table structure for table `sctcurrent` */
 
@@ -156,7 +156,7 @@ CREATE TABLE `specialty` (
 
 /*Data for the table `specialty` */
 
-insert  into `specialty`(`spno`,`spname`) values (1,'计算机技术'),(2,'软件工程'),(3,'网络工程'),(4,'信息安全');
+insert  into `specialty`(`spno`,`spname`) values (1,'计算机技术'),(2,'软件工程'),(3,'网络工程'),(4,'信息安全'),(5,'自动化'),(6,'材料工程'),(7,'有机化学'),(8,'材料工程'),(9,'物理');
 
 /*Table structure for table `spkcredit` */
 
@@ -171,7 +171,7 @@ CREATE TABLE `spkcredit` (
 
 /*Data for the table `spkcredit` */
 
-insert  into `spkcredit`(`spno`,`kno`,`credit`) values (1,1,30),(1,2,20),(1,3,45.5),(1,4,30),(1,5,20),(1,6,20),(1,7,25.5);
+insert  into `spkcredit`(`spno`,`kno`,`credit`) values (1,1,30),(1,2,20),(1,3,45.5),(1,4,30),(1,5,20),(1,6,20),(1,7,25.5),(2,1,31.5),(2,2,22),(2,3,40),(2,4,27),(2,5,15),(2,6,19),(2,7,20);
 
 /*Table structure for table `sta` */
 
@@ -205,7 +205,7 @@ CREATE TABLE `student` (
 
 /*Data for the table `student` */
 
-insert  into `student`(`sno`,`spno`,`sname`,`username`,`password`,`phonenumber`,`spicture`,`sex`,`grade`) values (2019001,1,'张三','三德子','123456','19155556666','002.png','男','2019'),(2147483647,1,'李四','inters','123456','18355555555','001.png','男','2019');
+insert  into `student`(`sno`,`spno`,`sname`,`username`,`password`,`phonenumber`,`spicture`,`sex`,`grade`) values (2019001,1,'张三','三德子','123456','19155556666','002.png','男','2019'),(2019501,2,'李华','lihua','234567','1884455667','9501.png','女','2019'),(2147483647,1,'李四','inters','123456','18355555555','001.png','男','2019');
 
 /*Table structure for table `teacher` */
 
