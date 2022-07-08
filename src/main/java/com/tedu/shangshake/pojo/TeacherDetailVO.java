@@ -1,12 +1,21 @@
 package com.tedu.shangshake.pojo;
 
 public class TeacherDetailVO {
+    Integer tno;
     String tname;
     String duty;//职务
     String t_edu_rec;//学位
     String tpicture;
     String tintroduction;
     String contact;
+
+    public Integer getTno() {
+        return tno;
+    }
+
+    public void setTno(Integer tno) {
+        this.tno = tno;
+    }
 
     public String getTname() {
         return tname;
