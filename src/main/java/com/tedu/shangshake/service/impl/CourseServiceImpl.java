@@ -264,22 +264,89 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public List<AppraiseVO> getCourseAppraise(Integer courseId) {
         //获取到课程的评论ano集合
-        QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("cno",courseId);
-        List<StudentCourseAppraiseDAO> studentCourseAppraiseDAOS = studentCourseAppraiseMapper.selectList(queryWrapper);
+        List<String> valueList = stringRedisTemplate.opsForList().range( "getSCA", 0, -1);
+        List<StudentCourseAppraiseDAO> studentCourseAppraiseDAOS = new ArrayList<>();
+        if(ObjectUtils.isEmpty(valueList)){
+            QueryWrapper queryWrapper = new QueryWrapper();
+            queryWrapper.eq("cno",courseId);
+            studentCourseAppraiseDAOS = studentCourseAppraiseMapper.selectList(queryWrapper);
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            for (StudentCourseAppraiseDAO studentCourseAppraiseDAO:studentCourseAppraiseDAOS){
+                try {
+                    String jsonString = objectMapper.writeValueAsString(studentCourseAppraiseDAO);
+                    stringRedisTemplate.opsForList().rightPush("getSCA",jsonString);
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+            }
+        }else {
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            for(String value:valueList){
+                try {
+                    StudentCourseAppraiseDAO studentCourseAppraiseDAO = objectMapper.readValue(value, StudentCourseAppraiseDAO.class);
+                    studentCourseAppraiseDAOS.add(studentCourseAppraiseDAO);
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
         //获取评价详细信息
         ArrayList<AppraiseVO> appraiseVOList = new ArrayList<>();
         for(StudentCourseAppraiseDAO studentCourseAppraiseDAO:studentCourseAppraiseDAOS){
-            QueryWrapper appraiseDetailQW = new QueryWrapper();
-            appraiseDetailQW.eq("ano",studentCourseAppraiseDAO.getAno());
-            AppraiseDAO appraiseDAO = appraiseMapper.selectOne(appraiseDetailQW);
+            AppraiseDAO appraiseDAO = new AppraiseDAO();
+            String getAno = stringRedisTemplate.opsForValue().get("ano"+String.valueOf(studentCourseAppraiseDAO.getAno()));
+            if(ObjectUtils.isEmpty(getAno)){
+                QueryWrapper appraiseDetailQW = new QueryWrapper();
+                appraiseDetailQW.eq("ano",studentCourseAppraiseDAO.getAno());
+                appraiseDAO = appraiseMapper.selectOne(appraiseDetailQW);
+
+                ObjectMapper objectMapper = new ObjectMapper();
+                try {
+                    String jsonString = objectMapper.writeValueAsString(appraiseDAO);
+                    stringRedisTemplate.opsForValue().set("ano"+String.valueOf(studentCourseAppraiseDAO.getAno()),jsonString);
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+            }else {
+                ObjectMapper objectMapper = new ObjectMapper();
+                try {
+                    appraiseDAO = objectMapper.readValue(getAno, AppraiseDAO.class);
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+            }
+
 
             AppraiseVO appraiseVO = new AppraiseVO();
             BeanUtils.copyProperties(appraiseDAO,appraiseVO);
             //根据sno获取用户昵称
-            QueryWrapper getUsernameQW = new QueryWrapper();
-            getUsernameQW.eq("sno",studentCourseAppraiseDAO.getSno());
-            StudentDAO studentDAO = studentMapper.selectOne(getUsernameQW);
+            StudentDAO studentDAO = new StudentDAO();
+            String getSno = stringRedisTemplate.opsForValue().get("sno"+String.valueOf(studentCourseAppraiseDAO.getSno()));
+            if(ObjectUtils.isEmpty(getSno)){
+                QueryWrapper getUsernameQW = new QueryWrapper();
+                getUsernameQW.eq("sno",studentCourseAppraiseDAO.getSno());
+                studentDAO = studentMapper.selectOne(getUsernameQW);
+
+                ObjectMapper objectMapper = new ObjectMapper();
+                try {
+                    String jsonString = objectMapper.writeValueAsString(studentDAO);
+                    stringRedisTemplate.opsForValue().set("sno"+String.valueOf(studentCourseAppraiseDAO.getSno()),jsonString);
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+            }else {
+                ObjectMapper objectMapper = new ObjectMapper();
+                try {
+                    studentDAO = objectMapper.readValue(getSno, StudentDAO.class);
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+            }
+
             appraiseVO.setUsername(studentDAO.getUsername());
             //根据cno、sno获取tno
             QueryWrapper getTnoQW = new QueryWrapper();
