@@ -2072,3 +2072,85 @@
 2022-07-08 21:54:06.189  INFO 3396 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
 2022-07-08 21:54:06.314  INFO 3396 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2022-07-08 21:54:06.319  INFO 3396 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-07-08 21:54:09.461  INFO 15196 --- [main] c.tedu.shangshake.ShangshakeApplication  : Starting ShangshakeApplication on LAPTOP-OUK8U1QH with PID 15196 (D:\javaproject\shangshake\target\classes started by Arthur in D:\javaproject\shangshake)
+2022-07-08 21:54:09.462 DEBUG 15196 --- [main] c.tedu.shangshake.ShangshakeApplication  : Running with Spring Boot v2.3.7.RELEASE, Spring v5.2.12.RELEASE
+2022-07-08 21:54:09.463  INFO 15196 --- [main] c.tedu.shangshake.ShangshakeApplication  : No active profile set, falling back to default profiles: default
+2022-07-08 21:54:10.076  INFO 15196 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-07-08 21:54:10.078  INFO 15196 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-07-08 21:54:10.093  INFO 15196 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7ms. Found 0 Redis repository interfaces.
+2022-07-08 21:54:10.473  INFO 15196 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9002 (http)
+2022-07-08 21:54:10.480  INFO 15196 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-07-08 21:54:10.480  INFO 15196 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2022-07-08 21:54:10.546  INFO 15196 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-07-08 21:54:10.546  INFO 15196 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1037 ms
+2022-07-08 21:54:10.746  WARN 15196 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.CourseDAO.
+2022-07-08 21:54:10.833  WARN 15196 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.TeacherDAO.
+2022-07-08 21:54:10.856  WARN 15196 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.AppraiseDAO.
+2022-07-08 21:54:10.877  WARN 15196 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.KindDAO.
+2022-07-08 21:54:10.894  WARN 15196 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.CourseTeacherDAO.
+2022-07-08 21:54:10.914  WARN 15196 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentCourseAppraiseDAO.
+2022-07-08 21:54:10.934  WARN 15196 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentCourseTeacherDAO.
+2022-07-08 21:54:10.955  WARN 15196 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentDAO.
+2022-07-08 21:54:11.122  WARN 15196 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentCourseTeacherCurrentDAO.
+2022-07-08 21:54:11.155  WARN 15196 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.SpecialtyDAO.
+2022-07-08 21:54:11.177  WARN 15196 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.SpecialtyKindCreditDAO.
+2022-07-08 21:54:11.199  WARN 15196 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentTeacherAppraiseDAO.
+2022-07-08 21:54:11.446  INFO 15196 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2022-07-08 21:54:11.515  INFO 15196 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-07-08 21:54:11.670  WARN 15196 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.SpecialtyCourseDAO.
+2022-07-08 21:54:11.728  INFO 15196 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9002 (http) with context path ''
+2022-07-08 21:54:11.729  INFO 15196 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Documentation plugins bootstrapped
+2022-07-08 21:54:11.732  INFO 15196 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-07-08 21:54:11.754  INFO 15196 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-07-08 21:54:11.955  INFO 15196 --- [main] c.tedu.shangshake.ShangshakeApplication  : Started ShangshakeApplication in 2.793 seconds (JVM running for 3.404)
+2022-07-08 21:54:40.722  INFO 15196 --- [http-nio-9002-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-08 21:54:40.722  INFO 15196 --- [http-nio-9002-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-07-08 21:54:40.728  INFO 15196 --- [http-nio-9002-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2022-07-08 21:54:41.149  INFO 15196 --- [http-nio-9002-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-08 21:54:41.267  INFO 15196 --- [http-nio-9002-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-08 21:54:41.273 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-08 21:54:41.291 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-08 21:54:41.310 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-08 21:54:41.314 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.m.S.selectList                     : ==>  Preparing: SELECT sno,cno,tno FROM sctcurrent WHERE (sno = ?) 
+2022-07-08 21:54:41.315 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.m.S.selectList                     : ==> Parameters: 2019001(Integer)
+2022-07-08 21:54:41.316 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.m.S.selectList                     : <==      Total: 4
+2022-07-08 21:58:22.763  WARN 15196 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m11s495ms709µs200ns).
+2022-07-08 21:58:22.767 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.CourseMapper.selectOne      : ==>  Preparing: SELECT cno,cname,averagestar,credit,cintroduction,cpicture,kno FROM course WHERE (cno = ?) 
+2022-07-08 21:58:22.767 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.CourseMapper.selectOne      : ==> Parameters: 10001(Integer)
+2022-07-08 21:58:22.771 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.CourseMapper.selectOne      : <==      Total: 1
+2022-07-08 21:58:22.772 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.m.CourseTeacherMapper.selectOne    : ==>  Preparing: SELECT cno,tno,cbeginweek,cendweek,week,section,testmethod,teachplace,teachmethod,remark FROM ct WHERE (tno = ? AND cno = ?) 
+2022-07-08 21:58:22.772 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.m.CourseTeacherMapper.selectOne    : ==> Parameters: 2004001(Integer), 10001(Integer)
+2022-07-08 21:58:22.774 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.m.CourseTeacherMapper.selectOne    : <==      Total: 1
+2022-07-08 21:58:22.775 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.TeacherMapper.selectOne     : ==>  Preparing: SELECT tno,tname,duty,t_edu_rec,tpicture,tintroduction,contact,averagestar FROM teacher WHERE (tno = ?) 
+2022-07-08 21:58:22.775 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.TeacherMapper.selectOne     : ==> Parameters: 2004001(Integer)
+2022-07-08 21:58:22.777 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.TeacherMapper.selectOne     : <==      Total: 1
+2022-07-08 21:58:22.778 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.CourseMapper.selectOne      : ==>  Preparing: SELECT cno,cname,averagestar,credit,cintroduction,cpicture,kno FROM course WHERE (cno = ?) 
+2022-07-08 21:58:22.778 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.CourseMapper.selectOne      : ==> Parameters: 10002(Integer)
+2022-07-08 21:58:22.780 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.CourseMapper.selectOne      : <==      Total: 1
+2022-07-08 21:58:22.781 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.m.CourseTeacherMapper.selectOne    : ==>  Preparing: SELECT cno,tno,cbeginweek,cendweek,week,section,testmethod,teachplace,teachmethod,remark FROM ct WHERE (tno = ? AND cno = ?) 
+2022-07-08 21:58:22.781 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.m.CourseTeacherMapper.selectOne    : ==> Parameters: 2004002(Integer), 10002(Integer)
+2022-07-08 21:58:22.782 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.m.CourseTeacherMapper.selectOne    : <==      Total: 1
+2022-07-08 21:58:22.784 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.TeacherMapper.selectOne     : ==>  Preparing: SELECT tno,tname,duty,t_edu_rec,tpicture,tintroduction,contact,averagestar FROM teacher WHERE (tno = ?) 
+2022-07-08 21:58:22.784 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.TeacherMapper.selectOne     : ==> Parameters: 2004002(Integer)
+2022-07-08 21:58:22.792 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.TeacherMapper.selectOne     : <==      Total: 1
+2022-07-08 21:58:22.793 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.CourseMapper.selectOne      : ==>  Preparing: SELECT cno,cname,averagestar,credit,cintroduction,cpicture,kno FROM course WHERE (cno = ?) 
+2022-07-08 21:58:22.793 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.CourseMapper.selectOne      : ==> Parameters: 10003(Integer)
+2022-07-08 21:58:22.795 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.CourseMapper.selectOne      : <==      Total: 1
+2022-07-08 21:58:22.797 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.m.CourseTeacherMapper.selectOne    : ==>  Preparing: SELECT cno,tno,cbeginweek,cendweek,week,section,testmethod,teachplace,teachmethod,remark FROM ct WHERE (tno = ? AND cno = ?) 
+2022-07-08 21:58:22.797 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.m.CourseTeacherMapper.selectOne    : ==> Parameters: 2004003(Integer), 10003(Integer)
+2022-07-08 21:58:22.798 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.m.CourseTeacherMapper.selectOne    : <==      Total: 1
+2022-07-08 21:58:22.800 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.TeacherMapper.selectOne     : ==>  Preparing: SELECT tno,tname,duty,t_edu_rec,tpicture,tintroduction,contact,averagestar FROM teacher WHERE (tno = ?) 
+2022-07-08 21:58:22.800 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.TeacherMapper.selectOne     : ==> Parameters: 2004003(Integer)
+2022-07-08 21:58:22.801 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.TeacherMapper.selectOne     : <==      Total: 1
+2022-07-08 21:58:22.802 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.CourseMapper.selectOne      : ==>  Preparing: SELECT cno,cname,averagestar,credit,cintroduction,cpicture,kno FROM course WHERE (cno = ?) 
+2022-07-08 21:58:22.803 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.CourseMapper.selectOne      : ==> Parameters: 10005(Integer)
+2022-07-08 21:58:22.804 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.CourseMapper.selectOne      : <==      Total: 1
+2022-07-08 21:58:22.805 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.m.CourseTeacherMapper.selectOne    : ==>  Preparing: SELECT cno,tno,cbeginweek,cendweek,week,section,testmethod,teachplace,teachmethod,remark FROM ct WHERE (tno = ? AND cno = ?) 
+2022-07-08 21:58:22.805 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.m.CourseTeacherMapper.selectOne    : ==> Parameters: 2005003(Integer), 10005(Integer)
+2022-07-08 21:58:22.807 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.m.CourseTeacherMapper.selectOne    : <==      Total: 1
+2022-07-08 21:58:22.808 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.TeacherMapper.selectOne     : ==>  Preparing: SELECT tno,tname,duty,t_edu_rec,tpicture,tintroduction,contact,averagestar FROM teacher WHERE (tno = ?) 
+2022-07-08 21:58:22.808 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.TeacherMapper.selectOne     : ==> Parameters: 2005003(Integer)
+2022-07-08 21:58:22.810 DEBUG 15196 --- [http-nio-9002-exec-1] c.t.s.mapper.TeacherMapper.selectOne     : <==      Total: 1
+2022-07-08 21:58:22.945  INFO 15196 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-07-08 21:58:23.065  INFO 15196 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-07-08 21:58:23.071  INFO 15196 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
