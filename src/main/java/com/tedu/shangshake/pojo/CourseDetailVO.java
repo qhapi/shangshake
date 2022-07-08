@@ -2,7 +2,7 @@ package com.tedu.shangshake.pojo;
 
 public class CourseDetailVO {
     String cname;
-    Float averageStar;
+    Float averagestar;
     Float credit;
     String cintroduction;
     String cpicture;
@@ -42,12 +42,12 @@ public class CourseDetailVO {
         this.cname = cname;
     }
 
-    public Float getAverageStar() {
-        return averageStar;
+    public Float getAveragestar() {
+        return averagestar;
     }
 
-    public void setAverageStar(Float averageStar) {
-        this.averageStar = averageStar;
+    public void setAveragestar(Float averagestar) {
+        this.averagestar = averagestar;
     }
 
     public Float getCredit() {
