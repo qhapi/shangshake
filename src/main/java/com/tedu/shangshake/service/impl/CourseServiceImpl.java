@@ -1,13 +1,17 @@
 package com.tedu.shangshake.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tedu.shangshake.mapper.*;
 import com.tedu.shangshake.pojo.*;
 import com.tedu.shangshake.service.CourseService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 
 import java.util.ArrayList;
@@ -34,16 +38,65 @@ public class CourseServiceImpl implements CourseService {
     StudentMapper studentMapper;
     @Autowired
     StringRedisTemplate stringRedisTemplate;
+    @Autowired
+    RedisTemplate redisTemplate;
 
     @Override
     public List<CourseVO> getCourse(Integer page, Integer num) {
-        List<CourseDAO> courseDAOS = courseMapper.selectList(null);
+        //stringRedisTemplate.delete("1");
+        List<String> valueList = stringRedisTemplate.opsForList().range( "getCourse", 0, -1);
+        List<CourseDAO> courseDAOS = new ArrayList<>();
+        if(ObjectUtils.isEmpty(valueList)){
+            courseDAOS = courseMapper.selectList(null);
+            ObjectMapper objectMapper = new ObjectMapper();
+            for (CourseDAO courseDAO:courseDAOS){
+                try {
+                    String jsonString = objectMapper.writeValueAsString(courseDAO);
+                    stringRedisTemplate.opsForList().rightPush("getCourse",jsonString);
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+            }
+        }else {
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            for(String value:valueList){
+                try {
+                    CourseDAO courseDAO = objectMapper.readValue(value, CourseDAO.class);
+                    courseDAOS.add(courseDAO);
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
         ArrayList<CourseVO> courseVOS = new ArrayList<>();
         for (CourseDAO courseDAO:courseDAOS){
             //获取到课程类别名称
-            QueryWrapper queryWrapper = new QueryWrapper();
-            queryWrapper.eq("kno",courseDAO.getKno());
-            KindDAO kindDAO = kindMapper.selectOne(queryWrapper);
+            KindDAO kindDAO = new KindDAO();
+            String getKnoName = stringRedisTemplate.opsForValue().get("kno"+String.valueOf(courseDAO.getKno()));
+            if(ObjectUtils.isEmpty(getKnoName)){
+                QueryWrapper queryWrapper = new QueryWrapper();
+                queryWrapper.eq("kno",courseDAO.getKno());
+                kindDAO = kindMapper.selectOne(queryWrapper);
+
+                ObjectMapper objectMapper = new ObjectMapper();
+                try {
+                    String jsonString = objectMapper.writeValueAsString(kindDAO);
+                    stringRedisTemplate.opsForValue().set("kno"+String.valueOf(courseDAO.getKno()),jsonString);
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+            }else {
+                ObjectMapper objectMapper = new ObjectMapper();
+                try {
+                    kindDAO = objectMapper.readValue(getKnoName, KindDAO.class);
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+            }
+
 
             CourseVO courseVO = new CourseVO();
             BeanUtils.copyProperties(courseDAO,courseVO);
