@@ -107,13 +107,15 @@ public class StudentCreditServiceImpl implements StudentCreditService {
         }
         List<StudentCourseTeacherCurrentDAO> sctCurrDAOList = studentCourseTeacherCurrentMapper.selectList(null);
         for (StudentCourseTeacherCurrentDAO sctCurrDAO : sctCurrDAOList) {
-            queryWrapper = new QueryWrapper();
-            queryWrapper.eq("cno", sctCurrDAO.getCno());
-            CourseDAO courseDAO = courseMapper.selectOne(queryWrapper);
-            Integer kind = courseDAO.getKno();
-            Float credit = courseDAO.getCredit();
-            Float creditSum = kindCurrCreditMap.get(kind) + credit;
-            kindCurrCreditMap.put(kind, creditSum);
+            if (no == sctCurrDAO.getSno()) {
+                queryWrapper = new QueryWrapper();
+                queryWrapper.eq("cno", sctCurrDAO.getCno());
+                CourseDAO courseDAO = courseMapper.selectOne(queryWrapper);
+                Integer kind = courseDAO.getKno();
+                Float credit = courseDAO.getCredit();
+                Float creditSum = kindCurrCreditMap.get(kind) + credit;
+                kindCurrCreditMap.put(kind, creditSum);
+            }
         }
         //总计行
         AllConditionVO sumCreditVO = new AllConditionVO();
