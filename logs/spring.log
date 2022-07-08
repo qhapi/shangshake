@@ -1667,3 +1667,90 @@
 2022-07-08 20:05:47.898  INFO 2468 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
 2022-07-08 20:05:47.910  INFO 2468 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2022-07-08 20:05:48.089  INFO 2468 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-07-08 20:05:53.457  INFO 8264 --- [main] c.tedu.shangshake.ShangshakeApplication  : Starting ShangshakeApplication on LAPTOP-OUK8U1QH with PID 8264 (D:\javaproject\shangshake\target\classes started by Arthur in D:\javaproject\shangshake)
+2022-07-08 20:05:53.459 DEBUG 8264 --- [main] c.tedu.shangshake.ShangshakeApplication  : Running with Spring Boot v2.3.7.RELEASE, Spring v5.2.12.RELEASE
+2022-07-08 20:05:53.459  INFO 8264 --- [main] c.tedu.shangshake.ShangshakeApplication  : No active profile set, falling back to default profiles: default
+2022-07-08 20:05:54.019  INFO 8264 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-07-08 20:05:54.020  INFO 8264 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-07-08 20:05:54.034  INFO 8264 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6ms. Found 0 Redis repository interfaces.
+2022-07-08 20:05:54.370  INFO 8264 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9002 (http)
+2022-07-08 20:05:54.376  INFO 8264 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-07-08 20:05:54.376  INFO 8264 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2022-07-08 20:05:54.435  INFO 8264 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-07-08 20:05:54.435  INFO 8264 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 937 ms
+2022-07-08 20:05:54.621  WARN 8264 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.CourseDAO.
+2022-07-08 20:05:54.696  WARN 8264 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.TeacherDAO.
+2022-07-08 20:05:54.718  WARN 8264 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.AppraiseDAO.
+2022-07-08 20:05:54.737  WARN 8264 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.KindDAO.
+2022-07-08 20:05:54.754  WARN 8264 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.CourseTeacherDAO.
+2022-07-08 20:05:54.772  WARN 8264 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentCourseAppraiseDAO.
+2022-07-08 20:05:54.791  WARN 8264 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentCourseTeacherDAO.
+2022-07-08 20:05:54.812  WARN 8264 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentDAO.
+2022-07-08 20:05:54.970  WARN 8264 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentCourseTeacherCurrentDAO.
+2022-07-08 20:05:54.991  WARN 8264 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.SpecialtyDAO.
+2022-07-08 20:05:55.011  WARN 8264 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.SpecialtyKindCreditDAO.
+2022-07-08 20:05:55.032  WARN 8264 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentTeacherAppraiseDAO.
+2022-07-08 20:05:55.258  INFO 8264 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2022-07-08 20:05:55.327  INFO 8264 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-07-08 20:05:55.476  WARN 8264 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.SpecialtyCourseDAO.
+2022-07-08 20:05:55.529  INFO 8264 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9002 (http) with context path ''
+2022-07-08 20:05:55.530  INFO 8264 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Documentation plugins bootstrapped
+2022-07-08 20:05:55.533  INFO 8264 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-07-08 20:05:55.552  INFO 8264 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-07-08 20:05:55.736  INFO 8264 --- [main] c.tedu.shangshake.ShangshakeApplication  : Started ShangshakeApplication in 2.544 seconds (JVM running for 3.045)
+2022-07-08 20:05:57.906  INFO 8264 --- [http-nio-9002-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-08 20:05:57.907  INFO 8264 --- [http-nio-9002-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-07-08 20:05:57.912  INFO 8264 --- [http-nio-9002-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2022-07-08 20:05:57.959  INFO 8264 --- [http-nio-9002-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-08 20:05:58.098  INFO 8264 --- [http-nio-9002-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-08 20:05:58.105 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.CourseMapper.selectList     : ==>  Preparing: SELECT cno,cname,averagestar,credit,cintroduction,cpicture,kno FROM course 
+2022-07-08 20:05:58.125 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.CourseMapper.selectList     : ==> Parameters: 
+2022-07-08 20:05:58.147 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.CourseMapper.selectList     : <==      Total: 15
+2022-07-08 20:05:58.180 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-08 20:05:58.182 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 1(Integer)
+2022-07-08 20:05:58.184 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-08 20:05:58.192 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-08 20:05:58.193 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 1(Integer)
+2022-07-08 20:05:58.194 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-08 20:05:58.195 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-08 20:05:58.196 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 1(Integer)
+2022-07-08 20:05:58.197 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-08 20:05:58.198 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-08 20:05:58.199 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 7(Integer)
+2022-07-08 20:05:58.200 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-08 20:05:58.202 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-08 20:05:58.202 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 2(Integer)
+2022-07-08 20:05:58.203 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-08 20:05:58.205 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-08 20:05:58.205 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 1(Integer)
+2022-07-08 20:05:58.207 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-08 20:05:58.209 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-08 20:05:58.209 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 5(Integer)
+2022-07-08 20:05:58.210 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-08 20:05:58.212 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-08 20:05:58.212 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 2(Integer)
+2022-07-08 20:05:58.214 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-08 20:05:58.217 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-08 20:05:58.217 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 2(Integer)
+2022-07-08 20:05:58.219 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-08 20:05:58.221 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-08 20:05:58.221 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 4(Integer)
+2022-07-08 20:05:58.223 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-08 20:05:58.224 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-08 20:05:58.226 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 6(Integer)
+2022-07-08 20:05:58.229 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-08 20:05:58.230 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-08 20:05:58.231 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 7(Integer)
+2022-07-08 20:05:58.233 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-08 20:05:58.234 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-08 20:05:58.235 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 4(Integer)
+2022-07-08 20:05:58.237 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-08 20:05:58.238 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-08 20:05:58.238 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 3(Integer)
+2022-07-08 20:05:58.240 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-08 20:05:58.241 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==>  Preparing: SELECT kno,kname FROM kind WHERE (kno = ?) 
+2022-07-08 20:05:58.242 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : ==> Parameters: 5(Integer)
+2022-07-08 20:05:58.243 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.mapper.KindMapper.selectOne        : <==      Total: 1
+2022-07-08 20:05:58.246 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.m.S.selectList                     : ==>  Preparing: SELECT sno,cno,tno FROM sctcurrent WHERE (sno = ?) 
+2022-07-08 20:05:58.246 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.m.S.selectList                     : ==> Parameters: 2019001(Integer)
+2022-07-08 20:05:58.249 DEBUG 8264 --- [http-nio-9002-exec-1] c.t.s.m.S.selectList                     : <==      Total: 4
