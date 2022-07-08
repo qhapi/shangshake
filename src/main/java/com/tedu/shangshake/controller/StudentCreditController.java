@@ -19,7 +19,7 @@ public class StudentCreditController {
     public ServerResult allCondition(Integer no) {
         List<AllConditionVO> list = studentCreditService.getAllCondition(no);
         if (list.size() == 0) {
-            return new ServerResult(0, "出错了", list);
+            return new ServerResult(101, "出错了", null);
         } else {
             return new ServerResult(0, "成功", list);
         }
@@ -29,11 +29,14 @@ public class StudentCreditController {
     public ServerResult currentCondition(CurrentConditionDTO dto) {
         List<CurrentConditionVO> list = studentCreditService.getCurrentCondition(dto);
         AllConditionVO conTitle = studentCreditService.getConditionTitle(dto);
-        CurrentConditionTitleVO ccTitleVO = new CurrentConditionTitleVO();
-        ccTitleVO.setVoList(list);
-        ccTitleVO.setTitle(conTitle);
+        if (conTitle.getkName().length() == 0) {
+            return new ServerResult(102, "出错了", null);
+        } else {
+            CurrentConditionTitleVO ccTitleVO = new CurrentConditionTitleVO();
+            ccTitleVO.setVoList(list);
+            ccTitleVO.setTitle(conTitle);
 
-        ServerResult serverResult = new ServerResult(0, "成功", ccTitleVO);
-        return serverResult;
+            return new ServerResult(0, "成功", ccTitleVO);
+        }
     }
 }
