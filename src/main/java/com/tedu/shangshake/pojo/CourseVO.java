@@ -4,8 +4,17 @@ public class CourseVO {
     Integer cno;
     String cname;
     Float credit;
+    Float averagestar;
     Integer kNo;
     String kName;
+
+    public Float getAveragestar() {
+        return averagestar;
+    }
+
+    public void setAveragestar(Float averagestar) {
+        this.averagestar = averagestar;
+    }
 
     public Integer getCno() {
         return cno;
