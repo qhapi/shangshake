@@ -1,11 +1,15 @@
 package com.tedu.shangshake.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tedu.shangshake.mapper.*;
 import com.tedu.shangshake.pojo.*;
 import com.tedu.shangshake.service.StudentCreditService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +32,8 @@ public class StudentCreditServiceImpl implements StudentCreditService {
     StudentCourseTeacherMapper studentCourseTeacherMapper;
     @Autowired
     StudentCourseTeacherCurrentMapper studentCourseTeacherCurrentMapper;
+    @Autowired
+    StringRedisTemplate stringRedisTemplate;//redis对象
 
     Map<Integer, Integer> cPassMap;
     ArrayList<AllConditionVO> allConditionVOList;
@@ -37,11 +43,26 @@ public class StudentCreditServiceImpl implements StudentCreditService {
     @Override
     public List<AllConditionVO> getAllCondition(Integer no) {
         ArrayList<AllConditionVO> voList = new ArrayList<>();//要返回的数据的集合。
+        QueryWrapper queryWrapper;
 
         //先通过student表查出专业号
-        QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("sno", no);
-        StudentDAO studentDAO = studentMapper.selectOne(queryWrapper);
+        StudentDAO studentDAO = new StudentDAO();
+        String value = stringRedisTemplate.opsForValue().get(String.valueOf(no));
+        if (ObjectUtils.isEmpty(value)) {//如redis中没有
+            queryWrapper = new QueryWrapper();
+            queryWrapper.eq("sno", no);
+            //因为具体的查询方法不一样，所以这一部分不能全都提炼到一个函数中。
+            studentDAO = studentMapper.selectOne(queryWrapper);
+            saveObjInRedis(studentDAO, no);
+        } else {//如redis中有，将value字符串转换为studentDAO。
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {//如果不用继承的话，这里也是不能提炼出函数的。暂时不提练了。
+                studentDAO = objectMapper.readValue(value, StudentDAO.class);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        }
+
         Integer spNo = studentDAO.getSpno();
         //再通过专业号查出专业对应的总学分列表
         queryWrapper = new QueryWrapper();
@@ -173,5 +194,15 @@ public class StudentCreditServiceImpl implements StudentCreditService {
         }
 
         return vo;
+    }
+
+    private void saveObjInRedis(Object obj, Integer no) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            String jsonString = objectMapper.writeValueAsString(obj);
+            stringRedisTemplate.opsForValue().set(String.valueOf(no), jsonString);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 }
