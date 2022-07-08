@@ -209,6 +209,8 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public boolean addCourseAppraise(StudentCourseAppraiseInsertDTO studentCourseAppraiseInsertDTO) {
+        //清除对应缓存
+        stringRedisTemplate.delete("getSCA");
         //插入信息到Appraise表
         AppraiseDAO appraiseDAO = new AppraiseDAO();
         BeanUtils.copyProperties(studentCourseAppraiseInsertDTO,appraiseDAO);
