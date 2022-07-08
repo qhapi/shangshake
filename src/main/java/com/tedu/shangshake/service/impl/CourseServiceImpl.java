@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -35,7 +36,7 @@ public class CourseServiceImpl implements CourseService {
     StringRedisTemplate stringRedisTemplate;
 
     @Override
-    public List<CourseVO> getCourse() {
+    public List<CourseVO> getCourse(Integer page, Integer num) {
         List<CourseDAO> courseDAOS = courseMapper.selectList(null);
         ArrayList<CourseVO> courseVOS = new ArrayList<>();
         for (CourseDAO courseDAO:courseDAOS){
@@ -49,7 +50,12 @@ public class CourseServiceImpl implements CourseService {
             courseVO.setkName(kindDAO.getKname());
             courseVOS.add(courseVO);
         }
-        return courseVOS;
+        ArrayList<CourseVO> list = new ArrayList<>();
+        for(int i = (page-1)*num; i < courseVOS.size(); i++){
+            list.add(courseVOS.get(i));
+            if(list.size() == num) break;
+        }
+        return list;
     }
 
     @Override
@@ -171,5 +177,65 @@ public class CourseServiceImpl implements CourseService {
             appraiseVOList.add(appraiseVO);
         }
         return appraiseVOList;
+    }
+
+    @Autowired
+    StudentCourseTeacherCurrentMapper currentMapper;
+    @Override
+    public List<CourseVO> passConflictCourse(Integer page,Integer num, Integer sno) {
+        List<CourseDAO> courseDAOS = courseMapper.selectList(null);
+
+        ArrayList<CourseVO> courseVOS = new ArrayList<>();
+        for (CourseDAO courseDAO:courseDAOS){
+            //获取到课程类别名称
+            QueryWrapper queryWrapper = new QueryWrapper();
+            queryWrapper.eq("kno",courseDAO.getKno());
+            KindDAO kindDAO = kindMapper.selectOne(queryWrapper);
+
+            CourseVO courseVO = new CourseVO();
+            BeanUtils.copyProperties(courseDAO,courseVO);
+            courseVO.setkName(kindDAO.getKname());
+            courseVOS.add(courseVO);
+        }
+        QueryWrapper currentQuery = new QueryWrapper();
+        currentQuery.eq("sno",sno);
+        List<StudentCourseTeacherCurrentDAO> currentList= currentMapper.selectList(currentQuery);
+
+        for(int i = 0; i < currentList.size(); i++){
+            //该学生已选课程
+            Integer cno = currentList.get(i).getCno();
+            courseVOS.removeIf(s->s.getCno().equals(cno));
+        }
+        ArrayList<CourseVO> list = new ArrayList<>();
+        for(int i = (page-1)*num; i < courseVOS.size(); i++){
+            list.add(courseVOS.get(i));
+            if(list.size() == num) break;
+        }
+        return list;
+    }
+
+    @Override
+    public List<CourseVO> getKnoCourse(Integer page, Integer num, Integer kno) {
+        QueryWrapper kindQuery = new QueryWrapper();
+        kindQuery.eq("kno", kno);
+        List<CourseDAO> courseDAOS = courseMapper.selectList(kindQuery);
+        ArrayList<CourseVO> courseVOS = new ArrayList<>();
+        for (CourseDAO courseDAO:courseDAOS){
+            //获取到课程类别名称
+            QueryWrapper queryWrapper = new QueryWrapper();
+            queryWrapper.eq("kno",kno);
+            KindDAO kindDAO = kindMapper.selectOne(queryWrapper);
+
+            CourseVO courseVO = new CourseVO();
+            BeanUtils.copyProperties(courseDAO,courseVO);
+            courseVO.setkName(kindDAO.getKname());
+            courseVOS.add(courseVO);
+        }
+        ArrayList<CourseVO> list = new ArrayList<>();
+        for(int i = (page-1)*num; i < courseVOS.size(); i++){
+            list.add(courseVOS.get(i));
+            if(list.size() == num) break;
+        }
+        return list;
     }
 }

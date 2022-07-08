@@ -16,8 +16,8 @@ public class CourseController {
     CourseService courseService;
 
     @RequestMapping("/course/getCourse")
-    public ServerResult getCourse(){
-        List<CourseVO> course = courseService.getCourse();
+    public ServerResult getCourse(Integer page, Integer num){
+        List<CourseVO> course = courseService.getCourse(page,num);
         ServerResult serverResult = new ServerResult(0, "getCourse success", course);
         return serverResult;
     }
@@ -40,6 +40,19 @@ public class CourseController {
     public ServerResult getCourseAppraise(Integer courseId){
         List<AppraiseVO> courseAppraise = courseService.getCourseAppraise(courseId);
         ServerResult serverResult = new ServerResult(0, "getCourseAppraise success", courseAppraise);
+        return serverResult;
+    }
+
+    @RequestMapping("/course/passConflictCourse")
+    public ServerResult passConflictCourse(Integer page,Integer num, Integer sno){
+        List<CourseVO> courseVOS = courseService.passConflictCourse(page, num, sno);
+        ServerResult serverResult = new ServerResult(0, "getCourse success", courseVOS);
+        return serverResult;
+    }
+    @RequestMapping("/course/getKnoCourse")
+    public ServerResult getKnoCourse(Integer page, Integer num, Integer kno){
+        List<CourseVO> courseVOS = courseService.getKnoCourse(page, num, kno);
+        ServerResult serverResult = new ServerResult(0, "getCourse success", courseVOS);
         return serverResult;
     }
 }
