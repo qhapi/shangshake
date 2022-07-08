@@ -1,12 +1,16 @@
 package com.tedu.shangshake.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tedu.shangshake.mapper.*;
 import com.tedu.shangshake.pojo.*;
 import com.tedu.shangshake.service.StudentService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,10 +87,7 @@ public class StudentServiceImpl implements StudentService {
         if(studentDAO != null) {
             studentDAO.setPassword(studentChangePasswordDTO.getNewPassword());
             int update = studentMapper.update(studentDAO, queryWrapper);
-            if(update != 0){
-                return true;
-            }
-            else return false;
+            return update != 0;
         }
         else return false;
     }
@@ -102,15 +103,14 @@ public class StudentServiceImpl implements StudentService {
             studentDAO.setSpicture(studentUpdateDTO.getSpicture());
 
             int update = studentMapper.update(studentDAO, queryWrapper);
-            if(update != 0){
-                return true;
-            }
-            else return false;
+            return update != 0;
         }
         else return false;
 
     }
 
+    @Autowired
+    StringRedisTemplate stringRedisTemplate;
     @Autowired
     StudentCourseTeacherCurrentMapper currentMapper;
     @Autowired
@@ -121,6 +121,8 @@ public class StudentServiceImpl implements StudentService {
     TeacherMapper teacherMapper;
     @Override
     public List<SelfCourseVO> getSelfCourseTable(Integer sno) {
+        String value = stringRedisTemplate.opsForValue().get(String.valueOf(sno));
+        if(ObjectUtils.isEmpty(value)){
         //获取studentDAO
         QueryWrapper studentQuery = new QueryWrapper();
         studentQuery.eq("sno",sno);
@@ -157,9 +159,30 @@ public class StudentServiceImpl implements StudentService {
             String tname = teacherDAO.getTname();
 
             SelfCourseVO selfCourseVO = new SelfCourseVO(currentDAOS.get(i).getCno(), cname, week, section, beginweek, endweek, teachplace, tname);
-            list.add(selfCourseVO);
 
+            list.add(selfCourseVO);
         }
-        return list;
+            SelfCourseList selfCourseList = new SelfCourseList();
+            selfCourseList.setList(list);
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {
+                String jsonString = objectMapper.writeValueAsString(selfCourseList);
+                stringRedisTemplate.opsForValue().set(String.valueOf(sno),jsonString);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+            return list;
+        }
+        else{
+            ObjectMapper objectMapper=new ObjectMapper();
+            try {
+                SelfCourseList selfCourseList = objectMapper.readValue(value, SelfCourseList.class);
+                return selfCourseList.getList();
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 }
