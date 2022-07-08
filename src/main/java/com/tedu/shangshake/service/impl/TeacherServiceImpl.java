@@ -2,6 +2,7 @@ package com.tedu.shangshake.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.tedu.shangshake.mapper.AppraiseMapper;
+import com.tedu.shangshake.mapper.StudentMapper;
 import com.tedu.shangshake.mapper.StudentTeacherAppraiseMapper;
 import com.tedu.shangshake.mapper.TeacherMapper;
 import com.tedu.shangshake.pojo.*;
@@ -21,6 +22,8 @@ public class TeacherServiceImpl implements TeacherService {
     StudentTeacherAppraiseMapper studentTeacherAppraiseMapper;
     @Autowired
     AppraiseMapper appraiseMapper;
+    @Autowired
+    StudentMapper studentMapper;
 
     public TeacherDetailVO getTeacherDetail(Integer teacherId){
         QueryWrapper queryWrapper = new QueryWrapper();
@@ -78,6 +81,12 @@ public class TeacherServiceImpl implements TeacherService {
 
             TeacherAppraiseVO teacherAppraiseVO = new TeacherAppraiseVO();
             BeanUtils.copyProperties(appraiseDAO,teacherAppraiseVO);
+            //根据tno获取用户昵称
+            QueryWrapper getUsernameQW = new QueryWrapper();
+            getUsernameQW.eq("sno",studentTeacherAppraiseDAO.getSno());
+            StudentDAO studentDAO = studentMapper.selectOne(getUsernameQW);
+            teacherAppraiseVO.setUsername(studentDAO.getUsername());
+
             teacherAppraiseVOArrayList.add(teacherAppraiseVO);
         }
         return teacherAppraiseVOArrayList;
