@@ -38,22 +38,22 @@
 						<form class="form-group" action="">
 							<div class="form-group">
 								<label for="">学工号</label>
-								<input class="form-control" type="text" placeholder="">
+								<input class="form-control" type="text" placeholder="" v-model="sno">
 							</div>
 							<div class="form-group">
-								<label for="">姓名</label>
-								<input class="form-control" type="text" placeholder="">
+								<label for="">昵称</label>
+								<input class="form-control" type="text" placeholder="" v-model="userName">
 							</div>
 							<div class="form-group">
 								<label for="">电话号</label>
-								<input class="form-control" type="text" placeholder="">
+								<input class="form-control" type="text" placeholder="" v-model="phoneNumber">
 							</div>
 							<div class="form-group">
 								<label for="">密码</label>
-								<input class="form-control" type="password" placeholder="至少6位字母或数字">
+								<input class="form-control" type="password" placeholder="" v-model="password">
 							</div>
 							<div class="text-right">
-								<button class="btn btn-primary" type="submit">提交</button>
+								<button class="btn btn-primary" type="button" v-on:click="registerF">提交</button>
 								<button class="btn btn-danger" data-dismiss="modal">取消</button>
 							</div>
 							<a href="" data-toggle="modal" data-dismiss="modal" data-target="#login">已有账号？点我登录</a>
@@ -78,14 +78,14 @@
 						<form class="form-group" action="">
 							<div class="form-group">
 								<label for="">学工号</label>
-								<input class="form-control" type="text" placeholder="">
+								<input class="form-control" type="text" placeholder="" v-model="sno">
 							</div>
 							<div class="form-group">
 								<label for="">密码</label>
-								<input class="form-control" type="password" placeholder="">
+								<input class="form-control" type="password" placeholder="" v-model="password">
 							</div>
 							<div class="text-right">
-								<button class="btn btn-primary" type="submit">登录</button>
+								<button class="btn btn-primary" type="button" v-on:click="loginF">登录</button>
 								<button class="btn btn-danger" data-dismiss="modal">取消</button>
 							</div>
 							<a href="" data-toggle="modal" data-dismiss="modal" data-target="#register">还没有账号？点我注册</a>
@@ -95,4 +95,69 @@
 			</div>
 		</div>
 	</body>
+	<script>
+		<!-- 登录 -->
+		var configLogin={
+			"el":"#login",
+			"data":{
+				"sno":"",
+				"password":""
+			},
+			"methods":{
+				"loginF":function(){
+					var url=serverUrl+"/login?password="+this.password
+										+"&sno="+this.sno
+					//用axios去联网
+					axios.get(url)
+					.then(function(response){
+						window.alert(response.data.msg)
+						if(response.data.data != -1){
+							var usersno = response.data.data;
+							window.sessionStorage["sno"] = usersno
+							location.href="studentDetails.html?sno="+usersno
+						}
+					})
+					.catch(function(e){
+						console.log(e)
+						window.alert("联网出错")
+					})
+				}
+			}
+		}
+		var vueLogin = new Vue(configLogin)
+		
+		<!-- 注册 -->
+		var configRegister={
+			"el":"#register",
+			"data":{
+				"sno":"",
+				"password":"",
+				"phoneNumber":"",
+				"userName":""
+			},
+			"mounted":{
+				"registerF":function(){
+					var url=serverUrl+"/register?password="+this.password
+					+"&phoneNumber="+this.phoneNumber
+					+"&sno="+this.sno
+					+"&userName="+this.userName
+					//用axios去联网
+					axios.get(url)
+					.then(function(response){
+						window.alert(response.data.msg)
+						if(response.data.data != -1){
+							var usersno = response.data.data;
+							window.sessionStorage["sno"] = usersno
+							location.href="studentDetails.html?sno="+usersno
+						}
+					})
+					.catch(function(e){
+						console.log(e)
+						window.alert("联网出错")
+					})
+				}
+			}
+		}
+		var vueRegister = new Vue(configRegister)
+	</script>
 </html>

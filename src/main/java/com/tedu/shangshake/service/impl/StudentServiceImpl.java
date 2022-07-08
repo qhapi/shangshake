@@ -1,13 +1,15 @@
 package com.tedu.shangshake.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.tedu.shangshake.mapper.SpecialtyMapper;
-import com.tedu.shangshake.mapper.StudentMapper;
+import com.tedu.shangshake.mapper.*;
 import com.tedu.shangshake.pojo.*;
 import com.tedu.shangshake.service.StudentService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -107,5 +109,57 @@ public class StudentServiceImpl implements StudentService {
         }
         else return false;
 
+    }
+
+    @Autowired
+    StudentCourseTeacherCurrentMapper currentMapper;
+    @Autowired
+    CourseMapper courseMapper;
+    @Autowired
+    CourseTeacherMapper courseTeacherMapper;
+    @Autowired
+    TeacherMapper teacherMapper;
+    @Override
+    public List<SelfCourseVO> getSelfCourseTable(Integer sno) {
+        //获取studentDAO
+        QueryWrapper studentQuery = new QueryWrapper();
+        studentQuery.eq("sno",sno);
+        StudentDAO studentDAO = studentMapper.selectOne(studentQuery);
+
+        //获取cno和tno
+        QueryWrapper ctQuery = new QueryWrapper();
+        ctQuery.eq("sno",sno);
+        List<StudentCourseTeacherCurrentDAO> currentDAOS = currentMapper.selectList(ctQuery);
+
+        List<SelfCourseVO> list = new ArrayList<>();
+        for(int i = 0 ; i < currentDAOS.size() ; i++)
+        {
+            //获取cname
+            QueryWrapper courseQuery = new QueryWrapper();
+            courseQuery.eq("cno",currentDAOS.get(i).getCno());
+            CourseDAO courseDAO = courseMapper.selectOne(courseQuery);
+            String cname = courseDAO.getCname();
+
+            //获取week,section,startweek,endweek,teachplace
+            QueryWrapper newctQuery = new QueryWrapper();
+            newctQuery.eq("tno", currentDAOS.get(i).getTno());
+            newctQuery.eq("cno", currentDAOS.get(i).getCno());
+            CourseTeacherDAO courseTeacherDAO = courseTeacherMapper.selectOne(newctQuery);
+            Integer week = courseTeacherDAO.getWeek();
+            Integer section = courseTeacherDAO.getSection();
+            Integer beginweek = courseTeacherDAO.getCbeginweek();
+            Integer endweek =courseTeacherDAO.getCendweek();
+            String teachplace = courseTeacherDAO.getTeachplace();
+            QueryWrapper teacherQuery = new QueryWrapper();
+            teacherQuery.eq("tno",currentDAOS.get(i).getTno());
+            TeacherDAO teacherDAO = teacherMapper.selectOne(teacherQuery);
+
+            String tname = teacherDAO.getTname();
+
+            SelfCourseVO selfCourseVO = new SelfCourseVO(currentDAOS.get(i).getCno(), cname, week, section, beginweek, endweek, teachplace, tname);
+            list.add(selfCourseVO);
+
+        }
+        return list;
     }
 }
