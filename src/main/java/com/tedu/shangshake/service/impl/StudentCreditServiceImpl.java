@@ -1,12 +1,19 @@
 package com.tedu.shangshake.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tedu.shangshake.mapper.*;
 import com.tedu.shangshake.pojo.*;
 import com.tedu.shangshake.service.StudentCreditService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +35,8 @@ public class StudentCreditServiceImpl implements StudentCreditService {
     StudentCourseTeacherMapper studentCourseTeacherMapper;
     @Autowired
     StudentCourseTeacherCurrentMapper studentCourseTeacherCurrentMapper;
+    @Autowired
+    StringRedisTemplate stringRedisTemplate;//redis对象
 
     Map<Integer, Integer> cPassMap;
     ArrayList<AllConditionVO> allConditionVOList;
@@ -37,11 +46,26 @@ public class StudentCreditServiceImpl implements StudentCreditService {
     @Override
     public List<AllConditionVO> getAllCondition(Integer no) {
         ArrayList<AllConditionVO> voList = new ArrayList<>();//要返回的数据的集合。
+        QueryWrapper queryWrapper;
 
         //先通过student表查出专业号
-        QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("sno", no);
-        StudentDAO studentDAO = studentMapper.selectOne(queryWrapper);
+        StudentDAO studentDAO = new StudentDAO();
+        String value = stringRedisTemplate.opsForValue().get(String.valueOf(no));
+        if (ObjectUtils.isEmpty(value)) {//如redis中没有
+            queryWrapper = new QueryWrapper();
+            queryWrapper.eq("sno", no);
+            //因为具体的查询方法不一样，所以这一部分不能全都提炼到一个函数中。
+            studentDAO = studentMapper.selectOne(queryWrapper);
+            saveObjInRedis(studentDAO, no);
+        } else {//如redis中有，将value字符串转换为studentDAO。
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {//如果不用继承的话，这里也是不能提炼出函数的。暂时不提练了。
+                studentDAO = objectMapper.readValue(value, StudentDAO.class);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        }
+
         Integer spNo = studentDAO.getSpno();
         //再通过专业号查出专业对应的总学分列表
         queryWrapper = new QueryWrapper();
@@ -132,21 +156,25 @@ public class StudentCreditServiceImpl implements StudentCreditService {
     public List<CurrentConditionVO> getCurrentCondition(CurrentConditionDTO dto) {
         //课程号、课程名、星级、学分、介绍、图像、是否通过
         ArrayList<CurrentConditionVO> voList = new ArrayList<>();
-        //dot中有（学生编号）sNo和（类型编号）kNo
+        //dto中有（学生编号）sNo和（类型编号）kNo
         //this.cPassMap中有该学生所有已选课程的是否通过情况。
         for (Integer cno : this.cPassMap.keySet()) {
+            //找出course
             QueryWrapper queryWrapper = new QueryWrapper();
             queryWrapper.eq("cno", cno);
             CourseDAO courseDAO = courseMapper.selectOne(queryWrapper);
-            CurrentConditionVO vo = new CurrentConditionVO();
-            vo.setNo(cno);
-            vo.setName(courseDAO.getCname());
-            vo.setAverageStar(courseDAO.getAveragestar());
-            vo.setCredit(courseDAO.getCredit());
-            vo.setIntroduction(courseDAO.getCintroduction());
-            vo.setPicture(courseDAO.getCpicture());
-            vo.setPassed(this.cPassMap.get(cno));
-            voList.add(vo);
+            //如果course.kno和dto.kno相同
+            if (courseDAO.getKno() == dto.getkNo()) {
+                CurrentConditionVO vo = new CurrentConditionVO();
+                vo.setNo(cno);
+                vo.setName(courseDAO.getCname());
+                vo.setAverageStar(courseDAO.getAveragestar());
+                vo.setCredit(courseDAO.getCredit());
+                vo.setIntroduction(courseDAO.getCintroduction());
+                vo.setPicture(courseDAO.getCpicture());
+                vo.setPassed(this.cPassMap.get(cno));
+                voList.add(vo);
+            }
         }
 
         return voList;
@@ -173,5 +201,63 @@ public class StudentCreditServiceImpl implements StudentCreditService {
         }
 
         return vo;
+    }
+
+    private void saveObjInRedis(Object obj, Integer no) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            String jsonString = objectMapper.writeValueAsString(obj);
+            stringRedisTemplate.opsForValue().set(String.valueOf(no), jsonString);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     *
+     * @param daoClass 要返回的DAO的类型
+     * @param tableName 要查找的表名
+     * @param no 要查找的主键
+     * @param columnName 要查找的列名
+     * @param isSelectOne 是selectOne还是selectList
+     * @return
+     */
+    private Object getDAOWithRedis(Class daoClass, String tableName, Integer no, String columnName, boolean isSelectOne) {
+        String value = stringRedisTemplate.opsForValue().get(String.valueOf(no));
+        if (ObjectUtils.isEmpty(value)) {
+            QueryWrapper queryWrapper = new QueryWrapper();
+            queryWrapper.eq(columnName, no);
+            Object dao;
+            try {
+                dao = daoClass.newInstance();//创建一个daoClass类型的对象
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+            //获取到this.Class()中的所有变量名的列表，遍历该列表，
+            // 如果该变量的名称和tableName+Mapper相同，调用该变量的selectOne方法。
+            Class thisClass = this.getClass();
+            Field[] fs = thisClass.getDeclaredFields();
+            for (Field field : fs) {
+                String fieldName = field.getName();
+                String mapperName = tableName + "Mapper";
+                if (fieldName.equals(mapperName)) {
+                    try {
+                        Method method = field.getClass().getMethod("selectOne", queryWrapper.getClass());
+                        try {
+                            dao = method.invoke(queryWrapper);
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        } catch (InvocationTargetException e) {
+                            e.printStackTrace();
+                        }
+                    } catch (NoSuchMethodException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        return null;
     }
 }
