@@ -12,6 +12,16 @@
 				    background: url(./index.jpg) no-repeat;
 				    background-size:100%;  
 				}
+				td
+				{
+				    text-align:center;
+
+				}
+				th
+				{
+				    text-align:center;
+
+				}
 		</style>
 	</head>
 	<body>
@@ -50,55 +60,83 @@
 					</ul>
 				</div>
 				<div class="col-md-9 column">
-					<table class="table table-striped">
+					<table id="myTimeTable" class="table table-hover" border="1" bordercolor="#55ffff">
 						<thead>
 							<tr>
-								<th>
-									星期一
-								</th>
-								<th>
-									星期二
-								</th>
-								<th>
-									星期三
-								</th>
-								<th>
-									星期四
-								</th>
-								<th>
-									星期五
-								</th>
-								<th>
-									星期六
-								</th>
-								<th>
-									星期日
-								</th>
+								<th></th>
+								<th>星期一</th>
+								<th>星期二</th>
+								<th>星期三</th>
+								<th>星期四</th>
+								<th>星期五</th>
+								<th>星期六</th>
+								<th>星期日</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td>
-									数学
+									第一大节
 								</td>
+								<td id="0"></td>
+								<td id="1"></td>
+								<td id="2"></td>
+								<td id="3"></td>
+								<td id="4"></td>
+								<td id="5"></td>
+								<td id="6"></td>
+							</tr>
+							
+							<tr>
 								<td>
-									英语
+									第二大节
 								</td>
+								<td id="7"></td>
+								<td id="8"></td>
+								<td id="9"></td>
+								<td id="10"></td>
+								<td id="11"></td>
+								<td id="12"></td>
+								<td id="13"></td>
+							</tr>
+							
+							<tr>
 								<td>
-									政治
+									第三大节
 								</td>
+								<td id="14"></td>
+								<td id="15"></td>
+								<td id="16"></td>
+								<td id="17"></td>
+								<td id="18"></td>
+								<td id="19"></td>
+								<td id="20"></td>
+							</tr>
+							
+							<tr>
 								<td>
-									数据结构
+									第四大节
 								</td>
+								<td id="21"></td>
+								<td id="22"></td>
+								<td id="23"></td>
+								<td id="24"></td>
+								<td id="25"></td>
+								<td id="26"></td>
+								<td id="27"></td>
+							</tr>
+							
+							<tr>
 								<td>
-									计算机组成原理
+									第五大节
 								</td>
-								<td>
-									计算机网络
-								</td>
-								<td>
-									操作系统
-								</td>
+								<td id="28"></td>
+								<td id="29"></td>
+								<td id="30"></td>
+								<td id="31"></td>
+								<td id="32"></td>
+								<td id="33"></td>
+								<td id="34"></td>
 							</tr>
 						</tbody>
 					</table>		
@@ -106,4 +144,38 @@
 			</div>
 		</div>
 	</body>
+	<script src="vue.js"></script>
+	<script src="axios.min.js"></script>
+	<script src="const.js"></script>
+	<script>
+		var config={
+			"el":"#myTimeTable",
+			"data":{
+				"tableList":[]
+			},
+			"mounted":function(){
+				var sno = window.sessionStorage.getItem("sno")
+				var url = serverUrl+"/getSelfCourseTable?sno="+sno
+
+				axios.get(url)
+				.then(function(response){
+					
+					var list = response.data.data
+					for (i = 0; i < list.length; i++) { 
+							var section = list[i].section
+							var week = list[i].week
+							var q = 7 * (section - 1) + week - 1
+							this.vue.tableList[q] = list[i];
+							console.log(this.vue.tableList[q].cname)
+							document.getElementById(q).innerHTML = this.vue.tableList[q].cname
+					}
+					console.log(this.vue.tableList)
+				})
+				.catch(function(e){
+					window.alert("联网出错了")
+				})
+			}
+		}
+		var vue = new Vue(config)
+	</script>
 </html>
