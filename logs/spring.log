@@ -2809,3 +2809,360 @@
 2022-07-09 02:13:28.347 DEBUG 24464 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
 2022-07-09 02:13:28.347 DEBUG 24464 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
 2022-07-09 02:13:28.348 DEBUG 24464 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 02:22:17.122  INFO 11312 --- [main] c.tedu.shangshake.ShangshakeApplication  : Starting ShangshakeApplication on DESKTOP-1BFGNC0 with PID 11312 (F:\暑期项目实训\shangshake\target\classes started by 梁文俊 in F:\暑期项目实训\shangshake)
+2022-07-09 02:22:17.125 DEBUG 11312 --- [main] c.tedu.shangshake.ShangshakeApplication  : Running with Spring Boot v2.3.7.RELEASE, Spring v5.2.12.RELEASE
+2022-07-09 02:22:17.126  INFO 11312 --- [main] c.tedu.shangshake.ShangshakeApplication  : No active profile set, falling back to default profiles: default
+2022-07-09 02:22:19.891  INFO 11312 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-07-09 02:22:19.900  INFO 11312 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-07-09 02:22:19.953  INFO 11312 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17ms. Found 0 Redis repository interfaces.
+2022-07-09 02:22:21.426  INFO 11312 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9002 (http)
+2022-07-09 02:22:21.449  INFO 11312 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-07-09 02:22:21.449  INFO 11312 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2022-07-09 02:22:21.634  INFO 11312 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-07-09 02:22:21.635  INFO 11312 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4458 ms
+2022-07-09 02:22:22.129  WARN 11312 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.CourseDAO.
+2022-07-09 02:22:22.523  WARN 11312 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.TeacherDAO.
+2022-07-09 02:22:22.572  WARN 11312 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.AppraiseDAO.
+2022-07-09 02:22:22.619  WARN 11312 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.KindDAO.
+2022-07-09 02:22:22.646  WARN 11312 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.CourseTeacherDAO.
+2022-07-09 02:22:22.683  WARN 11312 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentCourseAppraiseDAO.
+2022-07-09 02:22:22.732  WARN 11312 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentCourseTeacherDAO.
+2022-07-09 02:22:22.788  WARN 11312 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentDAO.
+2022-07-09 02:22:23.116  WARN 11312 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentCourseTeacherCurrentDAO.
+2022-07-09 02:22:23.371  WARN 11312 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.SpecialtyDAO.
+2022-07-09 02:22:23.404  WARN 11312 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.SpecialtyKindCreditDAO.
+2022-07-09 02:22:23.436  WARN 11312 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.StudentTeacherAppraiseDAO.
+2022-07-09 02:22:23.701  INFO 11312 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2022-07-09 02:22:23.829  INFO 11312 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-07-09 02:22:24.096  WARN 11312 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.tedu.shangshake.pojo.SpecialtyCourseDAO.
+2022-07-09 02:22:24.183  INFO 11312 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9002 (http) with context path ''
+2022-07-09 02:22:24.184  INFO 11312 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Documentation plugins bootstrapped
+2022-07-09 02:22:24.188  INFO 11312 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-07-09 02:22:24.213  INFO 11312 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-07-09 02:22:24.567  INFO 11312 --- [main] c.tedu.shangshake.ShangshakeApplication  : Started ShangshakeApplication in 8.313 seconds (JVM running for 10.222)
+2022-07-09 02:22:33.198  INFO 11312 --- [http-nio-9002-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-09 02:22:33.199  INFO 11312 --- [http-nio-9002-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-07-09 02:22:33.205  INFO 11312 --- [http-nio-9002-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2022-07-09 02:22:33.297  INFO 11312 --- [http-nio-9002-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-09 02:22:33.761  INFO 11312 --- [http-nio-9002-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-09 02:22:33.768 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ? AND password = ?) 
+2022-07-09 02:22:33.790 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer), 123456(String)
+2022-07-09 02:22:33.807 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 02:22:35.506 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 02:22:35.506 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 02:22:35.508 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 02:22:35.511 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 02:22:35.512 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 02:22:35.514 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 02:25:25.763 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ? AND password = ?) 
+2022-07-09 02:25:25.764 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer), 123456(String)
+2022-07-09 02:25:25.769 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 02:26:13.393 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 02:26:13.394 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 02:26:13.397 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 02:26:13.398 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 02:26:13.399 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 02:26:13.400 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 02:55:40.014 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 02:55:40.014 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 02:55:40.015 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 02:55:40.018 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.StudentMapper.update        : ==>  Preparing: UPDATE student SET sno=?, spno=?, sname=?, password=?, phonenumber=?, sex=?, grade=? WHERE (sno = ?) 
+2022-07-09 02:55:40.018 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.StudentMapper.update        : ==> Parameters: 2019001(Integer), 1(Integer), 张三(String), 123456(String), 17863002633(String), 男(String), 2019(String), 2019001(Integer)
+2022-07-09 02:55:40.254 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.StudentMapper.update        : <==    Updates: 1
+2022-07-09 03:21:42.855 DEBUG 11312 --- [http-nio-9002-exec-9] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ? AND password = ?) 
+2022-07-09 03:21:42.855 DEBUG 11312 --- [http-nio-9002-exec-9] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer), 123456(String)
+2022-07-09 03:21:42.857 DEBUG 11312 --- [http-nio-9002-exec-9] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:21:44.231 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:21:44.231 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:21:44.234 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:21:44.238 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:21:44.238 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:21:44.239 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:29:18.359 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ? AND password = ?) 
+2022-07-09 03:29:18.360 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer), 123456(String)
+2022-07-09 03:29:18.361 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:29:19.783 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:29:19.869 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:29:19.870 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:29:19.871 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:29:19.872 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:29:19.872 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:33:02.281 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:33:02.281 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:33:02.283 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:33:02.288 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:33:02.293 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:33:02.294 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:33:05.253 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:33:05.253 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:33:05.256 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:33:05.261 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:33:05.261 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:33:05.263 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:33:05.838 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:33:05.838 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:33:05.839 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:33:05.839 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:33:05.839 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:33:05.840 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:33:22.484 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:33:22.484 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:33:22.486 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:33:22.491 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:33:22.491 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:33:22.493 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:33:41.647 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:33:41.648 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:33:41.651 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:33:41.653 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:33:41.653 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:33:41.655 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:33:47.077 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:33:47.077 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:33:47.078 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:33:47.080 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:33:47.080 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:33:47.085 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:34:26.182 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:34:26.182 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:34:26.188 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:34:26.192 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:34:26.192 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:34:26.194 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:34:59.506 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:34:59.506 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:34:59.507 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:34:59.508 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:34:59.508 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:34:59.509 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:35:08.609 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:35:08.609 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:35:08.610 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:35:08.612 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:35:08.612 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:35:08.614 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:37:19.748 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:37:19.748 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:37:19.750 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:37:19.750 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:37:19.751 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:37:19.751 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:37:21.666 DEBUG 11312 --- [http-nio-9002-exec-9] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:37:21.666 DEBUG 11312 --- [http-nio-9002-exec-9] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:37:21.667 DEBUG 11312 --- [http-nio-9002-exec-9] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:37:21.668 DEBUG 11312 --- [http-nio-9002-exec-9] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:37:21.668 DEBUG 11312 --- [http-nio-9002-exec-9] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:37:21.668 DEBUG 11312 --- [http-nio-9002-exec-9] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:37:23.847 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:37:23.848 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:37:23.850 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:37:23.852 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:37:23.852 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:37:23.857 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:38:03.383 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:38:03.384 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:38:03.388 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:38:03.389 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:38:03.390 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:38:03.392 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:38:58.136 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:38:58.137 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:38:58.138 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:38:58.140 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:38:58.140 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:38:58.142 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:40:21.710 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:40:21.712 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:40:21.713 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:40:21.714 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:40:21.714 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:40:21.715 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:40:30.137 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:40:30.138 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:40:30.141 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:40:30.142 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:40:30.143 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:40:30.144 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:41:25.614 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:41:25.614 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:41:25.616 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:41:25.620 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.StudentMapper.update        : ==>  Preparing: UPDATE student SET sno=?, spno=?, sname=?, username=?, password=?, phonenumber=?, spicture=?, sex=?, grade=? WHERE (sno = ?) 
+2022-07-09 03:41:25.623 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.StudentMapper.update        : ==> Parameters: 2019001(Integer), 1(Integer), 张三(String), 666(String), 123456(String), 666(String), 666(String), 男(String), 2019(String), 2019001(Integer)
+2022-07-09 03:41:25.729 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.StudentMapper.update        : <==    Updates: 1
+2022-07-09 03:41:39.988 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:41:39.988 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:41:39.989 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:41:39.990 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:41:39.991 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:41:39.992 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:48:47.475 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:48:47.475 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:48:47.476 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:48:47.477 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:48:47.477 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:48:47.478 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:48:55.778 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:48:55.778 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:48:55.780 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:48:55.783 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:48:55.784 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:48:55.785 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:49:13.659 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:49:13.659 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:49:13.660 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:49:13.661 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.update        : ==>  Preparing: UPDATE student SET sno=?, spno=?, sname=?, username=?, password=?, phonenumber=?, spicture=?, sex=?, grade=? WHERE (sno = ?) 
+2022-07-09 03:49:13.661 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.update        : ==> Parameters: 2019001(Integer), 1(Integer), 张三(String), 777(String), 123456(String), 777(String), 777(String), 男(String), 2019(String), 2019001(Integer)
+2022-07-09 03:49:13.662 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.update        : <==    Updates: 1
+2022-07-09 03:49:15.564 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:49:15.565 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:49:15.566 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:49:15.568 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:49:15.568 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:49:15.569 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:49:22.447 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:49:22.447 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:49:22.448 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:49:22.448 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:49:22.448 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:49:22.449 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:50:37.032 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 03:50:37.032 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 03:50:37.033 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:50:37.034 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 03:50:37.034 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 03:50:37.035 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 03:52:10.856 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ? AND password = ?) 
+2022-07-09 03:52:10.856 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer), 123456(String)
+2022-07-09 03:52:10.857 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 03:52:10.858 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.StudentMapper.update        : ==>  Preparing: UPDATE student SET sno=?, spno=?, sname=?, username=?, password=?, phonenumber=?, spicture=?, sex=?, grade=? WHERE (sno = ? AND password = ?) 
+2022-07-09 03:52:10.858 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.StudentMapper.update        : ==> Parameters: 2019001(Integer), 1(Integer), 张三(String), 777(String), 123123(String), 777(String), 777(String), 男(String), 2019(String), 2019001(Integer), 123456(String)
+2022-07-09 03:52:10.962 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.StudentMapper.update        : <==    Updates: 1
+2022-07-09 04:05:45.026 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 04:05:45.026 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 04:05:45.027 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 04:05:45.028 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 04:05:45.028 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 04:05:45.029 DEBUG 11312 --- [http-nio-9002-exec-6] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 04:05:49.980 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 04:05:49.980 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 04:05:49.981 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 04:05:49.982 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 04:05:49.982 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 04:05:49.983 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 04:05:51.779 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 04:05:51.779 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 04:05:51.780 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 04:05:51.805 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 04:05:51.805 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 04:05:51.806 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 04:05:53.029 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 04:05:53.029 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 04:05:53.030 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 04:05:53.030 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 04:05:53.030 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 04:05:53.031 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 04:06:01.921 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 04:06:01.921 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 04:06:01.921 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 04:06:01.942 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 04:06:01.942 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 04:06:01.943 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 04:06:42.993 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 04:06:42.994 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 04:06:42.995 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 04:06:42.995 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 04:06:42.995 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 04:06:42.996 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 04:06:45.881 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 04:06:45.881 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 04:06:45.882 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 04:06:45.883 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 04:06:45.883 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 04:06:45.883 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 04:07:08.664 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 04:07:08.664 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 04:07:08.665 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 04:07:08.665 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 04:07:08.666 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 04:07:08.667 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 04:08:02.593 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 04:08:02.593 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 04:08:02.594 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 04:08:02.595 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 04:08:02.595 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 04:08:02.596 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 04:08:06.610 DEBUG 11312 --- [http-nio-9002-exec-9] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 04:08:06.610 DEBUG 11312 --- [http-nio-9002-exec-9] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 04:08:06.611 DEBUG 11312 --- [http-nio-9002-exec-9] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 04:08:06.612 DEBUG 11312 --- [http-nio-9002-exec-9] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 04:08:06.612 DEBUG 11312 --- [http-nio-9002-exec-9] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 04:08:06.612 DEBUG 11312 --- [http-nio-9002-exec-9] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 04:11:31.098 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 04:11:31.098 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 04:11:31.099 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 04:11:31.101 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 04:11:31.101 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 04:11:31.102 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 04:11:57.317 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ? AND password = ?) 
+2022-07-09 04:11:57.317 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer), 123321(String)
+2022-07-09 04:11:57.318 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 0
+2022-07-09 04:11:59.538 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 04:11:59.538 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 04:11:59.539 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 04:11:59.540 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 04:11:59.540 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 04:11:59.541 DEBUG 11312 --- [http-nio-9002-exec-3] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 04:12:25.602 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 04:12:25.602 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 04:12:25.604 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 04:12:25.606 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 04:12:25.607 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 04:12:25.609 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 04:13:18.866 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ? AND password = ?) 
+2022-07-09 04:13:18.867 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer), 123321(String)
+2022-07-09 04:13:18.867 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 0
+2022-07-09 04:13:20.603 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 04:13:20.604 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 04:13:20.605 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 04:13:20.606 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 04:13:20.606 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 04:13:20.607 DEBUG 11312 --- [http-nio-9002-exec-5] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 04:13:22.626 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 04:13:22.648 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 04:13:22.649 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 04:13:22.650 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 04:13:22.650 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 04:13:22.650 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 04:14:08.999 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ? AND password = ?) 
+2022-07-09 04:14:08.999 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer), 123321(String)
+2022-07-09 04:14:09.000 DEBUG 11312 --- [http-nio-9002-exec-7] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 0
+2022-07-09 04:14:22.785 DEBUG 11312 --- [http-nio-9002-exec-9] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ? AND password = ?) 
+2022-07-09 04:14:22.786 DEBUG 11312 --- [http-nio-9002-exec-9] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer), 123456(String)
+2022-07-09 04:14:22.793 DEBUG 11312 --- [http-nio-9002-exec-9] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 0
+2022-07-09 04:14:24.271 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ? AND password = ?) 
+2022-07-09 04:14:24.271 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer), 123456(String)
+2022-07-09 04:14:24.272 DEBUG 11312 --- [http-nio-9002-exec-1] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 0
+2022-07-09 04:15:00.688 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ? AND password = ?) 
+2022-07-09 04:15:00.688 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer), 123123(String)
+2022-07-09 04:15:00.689 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 04:15:00.689 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.update        : ==>  Preparing: UPDATE student SET sno=?, spno=?, sname=?, username=?, password=?, phonenumber=?, spicture=?, sex=?, grade=? WHERE (sno = ? AND password = ?) 
+2022-07-09 04:15:00.689 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.update        : ==> Parameters: 2019001(Integer), 1(Integer), 张三(String), 777(String), 123456(String), 777(String), 777(String), 男(String), 2019(String), 2019001(Integer), 123123(String)
+2022-07-09 04:15:00.690 DEBUG 11312 --- [http-nio-9002-exec-10] c.t.s.mapper.StudentMapper.update        : <==    Updates: 1
+2022-07-09 04:16:04.460 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ? AND password = ?) 
+2022-07-09 04:16:04.460 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer), 123456(String)
+2022-07-09 04:16:04.461 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 04:16:04.461 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.update        : ==>  Preparing: UPDATE student SET sno=?, spno=?, sname=?, username=?, password=?, phonenumber=?, spicture=?, sex=?, grade=? WHERE (sno = ? AND password = ?) 
+2022-07-09 04:16:04.461 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.update        : ==> Parameters: 2019001(Integer), 1(Integer), 张三(String), 777(String), 123321(String), 777(String), 777(String), 男(String), 2019(String), 2019001(Integer), 123456(String)
+2022-07-09 04:16:04.462 DEBUG 11312 --- [http-nio-9002-exec-2] c.t.s.mapper.StudentMapper.update        : <==    Updates: 1
+2022-07-09 04:16:06.187 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 04:16:06.188 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 04:16:06.192 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 04:16:06.197 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 04:16:06.198 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 04:16:06.199 DEBUG 11312 --- [http-nio-9002-exec-4] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
+2022-07-09 04:17:38.696 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.StudentMapper.selectOne     : ==>  Preparing: SELECT sno,spno,sname,username,password,phonenumber,spicture,sex,grade FROM student WHERE (sno = ?) 
+2022-07-09 04:17:38.696 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.StudentMapper.selectOne     : ==> Parameters: 2019001(Integer)
+2022-07-09 04:17:38.696 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.StudentMapper.selectOne     : <==      Total: 1
+2022-07-09 04:17:38.697 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.SpecialtyMapper.selectOne   : ==>  Preparing: SELECT spno,spname FROM specialty WHERE (spno = ?) 
+2022-07-09 04:17:38.697 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.SpecialtyMapper.selectOne   : ==> Parameters: 1(Integer)
+2022-07-09 04:17:38.698 DEBUG 11312 --- [http-nio-9002-exec-8] c.t.s.mapper.SpecialtyMapper.selectOne   : <==      Total: 1
