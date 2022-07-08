@@ -7,6 +7,24 @@ public class AppraiseVO {
     Float astar;
     Date atime;
     Boolean isanonymous;
+    String tname;
+    String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getTname() {
+        return tname;
+    }
+
+    public void setTname(String tname) {
+        this.tname = tname;
+    }
 
     public String getAcontent() {
         return acontent;
