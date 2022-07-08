@@ -114,13 +114,59 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public List<CourseDetailVO> getCourseDetail(Integer courseId) {
         //获取课程的基本信息
-        QueryWrapper courseInfoQW = new QueryWrapper();
-        courseInfoQW.eq("cno",courseId);
-        CourseDAO courseDAO = courseMapper.selectOne(courseInfoQW);
+        CourseDAO courseDAO = new CourseDAO();
+        String getCnoDetail = stringRedisTemplate.opsForValue().get("cno"+String.valueOf(courseId));
+        if(ObjectUtils.isEmpty(getCnoDetail)){
+            QueryWrapper courseInfoQW = new QueryWrapper();
+            courseInfoQW.eq("cno",courseId);
+            courseDAO = courseMapper.selectOne(courseInfoQW);
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {
+                String jsonString = objectMapper.writeValueAsString(courseDAO);
+                stringRedisTemplate.opsForValue().set("cno"+String.valueOf(courseId),jsonString);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        }else {
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {
+                courseDAO = objectMapper.readValue(getCnoDetail, CourseDAO.class);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        }
+
         //根据courseId在教师课程表中找教师课程list
-        QueryWrapper tcListQW = new QueryWrapper();
-        tcListQW.eq("cno",courseDAO.getCno());
-        List<CourseTeacherDAO> courseTeacherDAOList=courseTeacherMapper.selectList(tcListQW);
+        List<String> valueList = stringRedisTemplate.opsForList().range( "getCourseTeacher", 0, -1);
+        List<CourseTeacherDAO> courseTeacherDAOList = new ArrayList<>();
+        if(ObjectUtils.isEmpty(valueList)){
+            QueryWrapper tcListQW = new QueryWrapper();
+            tcListQW.eq("cno",courseDAO.getCno());
+            courseTeacherDAOList=courseTeacherMapper.selectList(tcListQW);
+            ObjectMapper objectMapper = new ObjectMapper();
+            for (CourseTeacherDAO courseTeacherDAO:courseTeacherDAOList){
+                try {
+                    String jsonString = objectMapper.writeValueAsString(courseTeacherDAO);
+                    stringRedisTemplate.opsForList().rightPush("getCourseTeacher",jsonString);
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+            }
+        }else {
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            for(String value:valueList){
+                try {
+                    CourseTeacherDAO courseTeacherDAO = objectMapper.readValue(value, CourseTeacherDAO.class);
+                    courseTeacherDAOList.add(courseTeacherDAO);
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
 
         ArrayList<CourseDetailVO> courseDetailVOList = new ArrayList<>();
 
@@ -129,9 +175,29 @@ public class CourseServiceImpl implements CourseService {
             BeanUtils.copyProperties(courseDAO,courseDetailVO);
             BeanUtils.copyProperties(courseTeacherDAO,courseDetailVO);
             //根据tno获取tname
-            QueryWrapper getTnameQW = new QueryWrapper();
-            getTnameQW.eq("tno",courseTeacherDAO.getTno());
-            TeacherDAO teacherDAO = teacherMapper.selectOne(getTnameQW);
+            TeacherDAO teacherDAO = new TeacherDAO();
+            String getTnoDetail = stringRedisTemplate.opsForValue().get("tno"+String.valueOf(courseTeacherDAO.getTno()));
+            if(ObjectUtils.isEmpty(getTnoDetail)){
+                QueryWrapper getTnameQW = new QueryWrapper();
+                getTnameQW.eq("tno",courseTeacherDAO.getTno());
+                teacherDAO = teacherMapper.selectOne(getTnameQW);
+
+                ObjectMapper objectMapper = new ObjectMapper();
+                try {
+                    String jsonString = objectMapper.writeValueAsString(teacherDAO);
+                    stringRedisTemplate.opsForValue().set("tno"+String.valueOf(courseTeacherDAO.getTno()),jsonString);
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+            }else {
+                ObjectMapper objectMapper = new ObjectMapper();
+                try {
+                    teacherDAO = objectMapper.readValue(getTnoDetail, TeacherDAO.class);
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+            }
+
 
             courseDetailVO.setTname(teacherDAO.getTname());
 
