@@ -2,6 +2,7 @@ package com.tedu.shangshake.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.tedu.shangshake.mapper.AppraiseMapper;
+import com.tedu.shangshake.mapper.StudentMapper;
 import com.tedu.shangshake.mapper.StudentTeacherAppraiseMapper;
 import com.tedu.shangshake.mapper.TeacherMapper;
 import com.tedu.shangshake.pojo.*;
@@ -21,6 +22,8 @@ public class TeacherServiceImpl implements TeacherService {
     StudentTeacherAppraiseMapper studentTeacherAppraiseMapper;
     @Autowired
     AppraiseMapper appraiseMapper;
+    @Autowired
+    StudentMapper studentMapper;
 
     public TeacherDetailVO getTeacherDetail(Integer teacherId){
         QueryWrapper queryWrapper = new QueryWrapper();
@@ -51,6 +54,26 @@ public class TeacherServiceImpl implements TeacherService {
             studentTeacherAppraiseDAO.setAno(maxids.get(0).getAno());
             int insert = studentTeacherAppraiseMapper.insert(studentTeacherAppraiseDAO);
             if(insert>=1){
+                //插入成功更新教师平均分
+                //获取到教师的评论ano集合
+                QueryWrapper queryWrapper = new QueryWrapper();
+                queryWrapper.eq("tno",studentTeacherAppraiseInsertDTO.getTno());
+                List<StudentTeacherAppraiseDAO> studentTeacherAppraiseDAOS = studentTeacherAppraiseMapper.selectList(queryWrapper);
+                int cnt = 0;
+                float sum = 0;
+                for(StudentTeacherAppraiseDAO sca:studentTeacherAppraiseDAOS){
+                    //根据ano获取astar
+                    QueryWrapper getStarQW = new QueryWrapper();
+                    getStarQW.eq("ano",sca.getAno());
+                    AppraiseDAO starAppraiseDAO = appraiseMapper.selectOne(getStarQW);
+                    sum += starAppraiseDAO.getAstar();
+                    cnt++;
+                }
+                QueryWrapper updateQW = new QueryWrapper();
+                updateQW.eq("tno",studentTeacherAppraiseInsertDTO.getTno());
+                TeacherDAO teacherDAO = new TeacherDAO();
+                teacherDAO.setAveragestar(new Float(sum/cnt));
+                teacherMapper.update(teacherDAO,updateQW);
                 return true;
             }else {
                 //删除插入的评价信息
@@ -78,6 +101,12 @@ public class TeacherServiceImpl implements TeacherService {
 
             TeacherAppraiseVO teacherAppraiseVO = new TeacherAppraiseVO();
             BeanUtils.copyProperties(appraiseDAO,teacherAppraiseVO);
+            //根据tno获取用户昵称
+            QueryWrapper getUsernameQW = new QueryWrapper();
+            getUsernameQW.eq("sno",studentTeacherAppraiseDAO.getSno());
+            StudentDAO studentDAO = studentMapper.selectOne(getUsernameQW);
+            teacherAppraiseVO.setUsername(studentDAO.getUsername());
+
             teacherAppraiseVOArrayList.add(teacherAppraiseVO);
         }
         return teacherAppraiseVOArrayList;

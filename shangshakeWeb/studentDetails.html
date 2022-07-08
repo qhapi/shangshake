@@ -7,6 +7,9 @@
 		<link rel="stylesheet" href="bootstrap-3.4.1-dist/css/bootstrap.min.css">
 		<script src="jquery.min.js"></script>
 		<script src="bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+		<script src="vue.js"></script>
+		<script src="axios.min.js"></script>
+		<script src="const.js"></script>
 		<style>
 			body{
 			    background: url(./index.jpg) no-repeat;
@@ -26,7 +29,7 @@
 		</style>
 	</head>
 	<body>
-		<div class="container">
+		<div id="studentInfo" class="container">
 			<div class="row clearfix">
 				<div class="col-md-12 column">
 					<div class="page-header">
@@ -63,7 +66,7 @@
 				<div class="col-md-9 column">
 					<div id="bg" class="jumbotron jumbotron-fluid">
 						<div class="container">
-							<h5>欢迎进入尼古拉·顶针的个人信息界面</h5>
+							<h5>欢迎进入{{infoList.username}}的个人信息界面</h5>
 						</div>
 					</div>
 					<div class="container">
@@ -71,7 +74,7 @@
 						<hr>
 						<div class="row">
 							<div class="col-md-4">
-								<img src="1.jpg" class="rounded img-fluid">
+								<img v-bind:src="infoList.spicture" class="rounded img-fluid">
 							</div>
 						</div>
 					</div>
@@ -81,12 +84,13 @@
 						<hr>
 						<div class="col-md-9">
 							<ul class="list-group">
-								<li class="list-group-item">昵称：尼古拉·顶针</li>
-								<li class="list-group-item">姓名：李二</li>
-								<li class="list-group-item">学号：201900800999</li>
-								<li class="list-group-item">年级：2019级</li>
-								<li class="list-group-item">性别：男</li>
-								<li class="list-group-item">手机号：17863002622</li>
+								<li class="list-group-item">昵称：{{infoList.username}}</li>
+								<li class="list-group-item">姓名：{{infoList.name}}</li>
+								<li class="list-group-item">学号：{{infoList.sno}}</li>
+								<li class="list-group-item">年级：{{infoList.grade}}</li>
+								<li class="list-group-item">性别：{{infoList.sex}}</li>
+								<li class="list-group-item">院系：{{infoList.spname}}</li>
+								<li class="list-group-item">手机号：{{infoList.phonenumber}}</li>
 							</ul>
 						</div>
 					</div>
@@ -95,4 +99,23 @@
 			</div>
 		</div>
 	</body>
+	<script>
+		var config={
+			"el":"#studentInfo",
+			"data":{
+				"infoList":[]
+			},
+			"mounted":function(){
+				var sno = window.sessionStorage.getItem("sno")
+				var url = serverUrl+"/getStudentInfo?sno="+sno
+				axios.get(url)
+				.then(function(response){
+					var list = response.data.data
+					this.vue.infoList = list
+				})
+				.catch()
+			}
+		}
+		var vue = new Vue(config)
+	</script>
 </html>

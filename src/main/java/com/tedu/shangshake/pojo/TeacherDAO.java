@@ -11,6 +11,15 @@ public class TeacherDAO {
     String tpicture;
     String tintroduction;
     String contact;
+    Float averagestar;
+
+    public Float getAveragestar() {
+        return averagestar;
+    }
+
+    public void setAveragestar(Float averagestar) {
+        this.averagestar = averagestar;
+    }
 
     public Integer getTno() {
         return tno;

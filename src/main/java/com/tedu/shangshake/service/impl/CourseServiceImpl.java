@@ -6,6 +6,7 @@ import com.tedu.shangshake.pojo.*;
 import com.tedu.shangshake.service.CourseService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -26,6 +27,12 @@ public class CourseServiceImpl implements CourseService {
     CourseTeacherMapper courseTeacherMapper;
     @Autowired
     StudentCourseAppraiseMapper studentCourseAppraiseMapper;
+    @Autowired
+    StudentCourseTeacherMapper studentCourseTeacherMapper;
+    @Autowired
+    StudentMapper studentMapper;
+    @Autowired
+    StringRedisTemplate stringRedisTemplate;
 
     @Override
     public List<CourseVO> getCourse() {
@@ -94,6 +101,27 @@ public class CourseServiceImpl implements CourseService {
             studentCourseAppraiseDAO.setAno(maxids.get(0).getAno());
             int insert = studentCourseAppraiseMapper.insert(studentCourseAppraiseDAO);
             if(insert>=1){
+                //插入成功更新课程平均分
+                //获取到课程的评论ano集合
+                QueryWrapper queryWrapper = new QueryWrapper();
+                queryWrapper.eq("cno",studentCourseAppraiseInsertDTO.getCno());
+                List<StudentCourseAppraiseDAO> studentCourseAppraiseDAOS = studentCourseAppraiseMapper.selectList(queryWrapper);
+                int cnt = 0;
+                float sum = 0;
+                for(StudentCourseAppraiseDAO sca:studentCourseAppraiseDAOS){
+                    //根据ano获取astar
+                    QueryWrapper getStarQW = new QueryWrapper();
+                    getStarQW.eq("ano",sca.getAno());
+                    AppraiseDAO starAppraiseDAO = appraiseMapper.selectOne(getStarQW);
+                    sum += starAppraiseDAO.getAstar();
+                    cnt++;
+                }
+                QueryWrapper updateQW = new QueryWrapper();
+                updateQW.eq("cno",studentCourseAppraiseInsertDTO.getCno());
+                CourseDAO courseDAO = new CourseDAO();
+                courseDAO.setAveragestar(new Float(sum/cnt));
+                courseMapper.update(courseDAO,updateQW);
+
                 return true;
             }else {
                 //删除插入的评价信息
@@ -123,6 +151,23 @@ public class CourseServiceImpl implements CourseService {
 
             AppraiseVO appraiseVO = new AppraiseVO();
             BeanUtils.copyProperties(appraiseDAO,appraiseVO);
+            //根据sno获取用户昵称
+            QueryWrapper getUsernameQW = new QueryWrapper();
+            getUsernameQW.eq("sno",studentCourseAppraiseDAO.getSno());
+            StudentDAO studentDAO = studentMapper.selectOne(getUsernameQW);
+            appraiseVO.setUsername(studentDAO.getUsername());
+            //根据cno、sno获取tno
+            QueryWrapper getTnoQW = new QueryWrapper();
+            getTnoQW.eq("cno",studentCourseAppraiseDAO.getCno());
+            getTnoQW.eq("sno",studentCourseAppraiseDAO.getSno());
+            StudentCourseTeacherDAO studentCourseTeacherDAO = studentCourseTeacherMapper.selectOne(getTnoQW);
+            Integer tno = studentCourseTeacherDAO.getTno();
+            //根据tno获取tname
+            QueryWrapper getTnameQW = new QueryWrapper();
+            getTnameQW.eq("tno",tno);
+            TeacherDAO teacherDAO = teacherMapper.selectOne(getTnameQW);
+            appraiseVO.setTname(teacherDAO.getTname());
+
             appraiseVOList.add(appraiseVO);
         }
         return appraiseVOList;
