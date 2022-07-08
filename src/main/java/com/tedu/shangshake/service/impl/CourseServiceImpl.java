@@ -26,6 +26,10 @@ public class CourseServiceImpl implements CourseService {
     CourseTeacherMapper courseTeacherMapper;
     @Autowired
     StudentCourseAppraiseMapper studentCourseAppraiseMapper;
+    @Autowired
+    StudentCourseTeacherMapper studentCourseTeacherMapper;
+    @Autowired
+    StudentMapper studentMapper;
 
     @Override
     public List<CourseVO> getCourse() {
@@ -123,6 +127,23 @@ public class CourseServiceImpl implements CourseService {
 
             AppraiseVO appraiseVO = new AppraiseVO();
             BeanUtils.copyProperties(appraiseDAO,appraiseVO);
+            //根据sno获取用户昵称
+            QueryWrapper getUsernameQW = new QueryWrapper();
+            getUsernameQW.eq("sno",studentCourseAppraiseDAO.getSno());
+            StudentDAO studentDAO = studentMapper.selectOne(getUsernameQW);
+            appraiseVO.setUsername(studentDAO.getUsername());
+            //根据cno、sno获取tno
+            QueryWrapper getTnoQW = new QueryWrapper();
+            getTnoQW.eq("cno",studentCourseAppraiseDAO.getCno());
+            getTnoQW.eq("sno",studentCourseAppraiseDAO.getSno());
+            StudentCourseTeacherDAO studentCourseTeacherDAO = studentCourseTeacherMapper.selectOne(getTnoQW);
+            Integer tno = studentCourseTeacherDAO.getTno();
+            //根据tno获取tname
+            QueryWrapper getTnameQW = new QueryWrapper();
+            getTnameQW.eq("tno",tno);
+            TeacherDAO teacherDAO = teacherMapper.selectOne(getTnameQW);
+            appraiseVO.setTname(teacherDAO.getTname());
+
             appraiseVOList.add(appraiseVO);
         }
         return appraiseVOList;
