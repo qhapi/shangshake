@@ -107,7 +107,7 @@ public class StudentCreditServiceImpl implements StudentCreditService {
         }
         List<StudentCourseTeacherCurrentDAO> sctCurrDAOList = studentCourseTeacherCurrentMapper.selectList(null);
         for (StudentCourseTeacherCurrentDAO sctCurrDAO : sctCurrDAOList) {
-            if (no == sctCurrDAO.getSno()) {
+            if (sctCurrDAO.getSno().equals(no)) {
                 queryWrapper = new QueryWrapper();
                 queryWrapper.eq("cno", sctCurrDAO.getCno());
                 CourseDAO courseDAO = courseMapper.selectOne(queryWrapper);
