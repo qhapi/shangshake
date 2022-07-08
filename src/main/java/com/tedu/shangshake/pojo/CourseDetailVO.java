@@ -1,6 +1,7 @@
 package com.tedu.shangshake.pojo;
 
 public class CourseDetailVO {
+    Integer cno;
     String cname;
     Float averagestar;
     Float credit;
@@ -17,6 +18,14 @@ public class CourseDetailVO {
     String teachplace;
     String teachmethod;
     String remark;
+
+    public Integer getCno() {
+        return cno;
+    }
+
+    public void setCno(Integer cno) {
+        this.cno = cno;
+    }
 
     public Integer getTno() {
         return tno;
