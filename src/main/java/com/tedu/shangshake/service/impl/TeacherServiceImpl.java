@@ -1,6 +1,8 @@
 package com.tedu.shangshake.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tedu.shangshake.mapper.AppraiseMapper;
 import com.tedu.shangshake.mapper.StudentMapper;
 import com.tedu.shangshake.mapper.StudentTeacherAppraiseMapper;
@@ -9,7 +11,9 @@ import com.tedu.shangshake.pojo.*;
 import com.tedu.shangshake.service.TeacherService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +28,32 @@ public class TeacherServiceImpl implements TeacherService {
     AppraiseMapper appraiseMapper;
     @Autowired
     StudentMapper studentMapper;
+    @Autowired
+    StringRedisTemplate stringRedisTemplate;
 
     public TeacherDetailVO getTeacherDetail(Integer teacherId){
-        QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("tno",teacherId);
-        TeacherDAO teacherDAO = teacherMapper.selectOne(queryWrapper);
+        TeacherDAO teacherDAO = new TeacherDAO();
+        String getTnoDetail = stringRedisTemplate.opsForValue().get("tno"+String.valueOf(teacherId));
+        if(ObjectUtils.isEmpty(getTnoDetail)){
+            QueryWrapper queryWrapper = new QueryWrapper();
+            queryWrapper.eq("tno",teacherId);
+            teacherDAO = teacherMapper.selectOne(queryWrapper);
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {
+                String jsonString = objectMapper.writeValueAsString(teacherDAO);
+                stringRedisTemplate.opsForValue().set("tno"+String.valueOf(teacherId),jsonString);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        }else {
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {
+                teacherDAO = objectMapper.readValue(getTnoDetail, TeacherDAO.class);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        }
 
         TeacherDetailVO teacherDetailVO = new TeacherDetailVO();
         BeanUtils.copyProperties(teacherDAO,teacherDetailVO);
