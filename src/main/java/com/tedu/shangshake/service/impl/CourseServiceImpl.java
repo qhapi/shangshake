@@ -6,6 +6,7 @@ import com.tedu.shangshake.pojo.*;
 import com.tedu.shangshake.service.CourseService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -30,6 +31,8 @@ public class CourseServiceImpl implements CourseService {
     StudentCourseTeacherMapper studentCourseTeacherMapper;
     @Autowired
     StudentMapper studentMapper;
+    @Autowired
+    StringRedisTemplate stringRedisTemplate;
 
     @Override
     public List<CourseVO> getCourse() {
@@ -98,6 +101,27 @@ public class CourseServiceImpl implements CourseService {
             studentCourseAppraiseDAO.setAno(maxids.get(0).getAno());
             int insert = studentCourseAppraiseMapper.insert(studentCourseAppraiseDAO);
             if(insert>=1){
+                //插入成功更新课程平均分
+                //获取到课程的评论ano集合
+                QueryWrapper queryWrapper = new QueryWrapper();
+                queryWrapper.eq("cno",studentCourseAppraiseInsertDTO.getCno());
+                List<StudentCourseAppraiseDAO> studentCourseAppraiseDAOS = studentCourseAppraiseMapper.selectList(queryWrapper);
+                int cnt = 0;
+                float sum = 0;
+                for(StudentCourseAppraiseDAO sca:studentCourseAppraiseDAOS){
+                    //根据ano获取astar
+                    QueryWrapper getStarQW = new QueryWrapper();
+                    getStarQW.eq("ano",sca.getAno());
+                    AppraiseDAO starAppraiseDAO = appraiseMapper.selectOne(getStarQW);
+                    sum += starAppraiseDAO.getAstar();
+                    cnt++;
+                }
+                QueryWrapper updateQW = new QueryWrapper();
+                updateQW.eq("cno",studentCourseAppraiseInsertDTO.getCno());
+                CourseDAO courseDAO = new CourseDAO();
+                courseDAO.setAveragestar(new Float(sum/cnt));
+                courseMapper.update(courseDAO,updateQW);
+
                 return true;
             }else {
                 //删除插入的评价信息
