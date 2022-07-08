@@ -10,6 +10,7 @@ public class SelfCourseVO {
     String teachplace;
     String tname;
 
+    public SelfCourseVO(){}
 
     public SelfCourseVO(Integer cno, String cname, Integer week, Integer section, Integer startweek, Integer endweek, String teachplace,String tname) {
         this.cno = cno;

@@ -4,16 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SelfCourseList {
-    List<SelfCourseVO> list;
+    public List<SelfCourseVO> list;
 
-    public List<SelfCourseVO> getList() {
-        return list;
+    public SelfCourseList() {
+        this.list = new ArrayList<>();
     }
 
-    public void setList(List<SelfCourseVO> list) {
-        list = new ArrayList();
-        for(int i = 0; i < list.size(); i++){
-            this.list.add(list.get(i));
-        }
+    public SelfCourseList(List<SelfCourseVO> list) {
+        this.list = new ArrayList<>();
+        this.list.addAll(list);
     }
 }

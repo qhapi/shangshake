@@ -133,7 +133,7 @@ public class StudentServiceImpl implements StudentService {
         ctQuery.eq("sno",sno);
         List<StudentCourseTeacherCurrentDAO> currentDAOS = currentMapper.selectList(ctQuery);
 
-        List<SelfCourseVO> list = new ArrayList<>();
+            SelfCourseList selfCourseList = new SelfCourseList();
         for(int i = 0 ; i < currentDAOS.size() ; i++)
         {
             //获取cname
@@ -160,10 +160,9 @@ public class StudentServiceImpl implements StudentService {
 
             SelfCourseVO selfCourseVO = new SelfCourseVO(currentDAOS.get(i).getCno(), cname, week, section, beginweek, endweek, teachplace, tname);
 
-            list.add(selfCourseVO);
+            selfCourseList.list.add(selfCourseVO);
         }
-            SelfCourseList selfCourseList = new SelfCourseList();
-            selfCourseList.setList(list);
+
 
             ObjectMapper objectMapper = new ObjectMapper();
             try {
@@ -172,13 +171,13 @@ public class StudentServiceImpl implements StudentService {
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }
-            return list;
+            return selfCourseList.list;
         }
         else{
             ObjectMapper objectMapper=new ObjectMapper();
             try {
                 SelfCourseList selfCourseList = objectMapper.readValue(value, SelfCourseList.class);
-                return selfCourseList.getList();
+                return selfCourseList.list;
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }
