@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>Document</title>
+		<link rel="stylesheet" href="bootstrap-3.4.1-dist/css/bootstrap.min.css">
+		<script src="jquery.min.js"></script>
+		<script src="bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+		<style>
+				body{
+				    background: url(./index.jpg) no-repeat;
+				    background-size:100%;  
+				}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<div class="page-header">
+						<h1>
+							上啥课
+						</h1>
+					</div>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-3 column">
+					<p class="nav-header">
+					</p>
+					<ul class="nav nav-list">
+						<li class="active">
+							<a href="#">首页</a>
+						</li>
+						<li>
+							<a href="myTimeTable.html">我的课程</a>
+						</li>
+						<li>
+							<a href="#">需修课程</a>
+						</li>
+						<li>
+							<a href="#">课程信息</a>
+						</li>
+						<li>
+							<a href="studentDetails.html">个人资料</a>
+						</li>
+						<li>
+							<a href="studentDetailsUpdate.html">设置</a>
+						</li>
+						<li class="divider">
+						</li>
+					</ul>
+				</div>
+				<div id="studentDetailsUpdate" class="col-md-9 column">
+					<div class="container">
+						<h2 class="text-primary">基本信息修改</h2>
+						<hr>
+						<div class="col-md-9">
+							<form class="form-horizontal" role="form">
+							        <div class="form-group">
+							            <label class="col-sm-2 control-label">学号</label>
+							            <div class="col-sm-10">
+							                <input type="text" class="form-control" placeholder="请输入您的学号" v-model="sno"/>
+							            </div>
+							        </div>
+							        <div class="form-group">
+							            <label class="col-sm-2 control-label">昵称</label>
+							            <div class="col-sm-10">
+							                <input type="text" class="form-control" placeholder="请输入您的昵称" v-model="username"/>
+							            </div>
+							        </div>
+									<div class="form-group">
+							            <label class="col-sm-2 control-label">头像</label>
+							            <div class="col-sm-10">
+							                <input type="text" class="form-control" placeholder="请输入您的头像" v-model="spicture"/>
+							            </div>
+							        </div>
+									<div class="form-group">
+							            <label class="col-sm-2 control-label">手机号</label>
+							            <div class="col-sm-10">
+							                <input type="text" class="form-control" placeholder="请输入您的手机号" v-model="phonenumber"/>
+							            </div>
+							        </div>
+							        <div class="form-group">
+							            <div class="col-sm-offset-2 col-sm-10">
+							                <button type="button" class="btn btn-default" v-on:click="updateInfo">修改</button>
+							            </div>
+							        </div>
+							</form>
+						</div>
+					</div>
+						<br />
+					<div class="container">
+						<h2 class="text-primary">密码修改</h2>
+						<hr>
+						<div class="col-md-9">
+							<form class="form-horizontal" role="form">
+							        <div class="form-group">
+							            <label class="col-sm-2 control-label">学号</label>
+							            <div class="col-sm-10">
+							                <input type="text" class="form-control" placeholder="请输入您的学号" v-model="snopassword"/>
+							            </div>
+							        </div>
+							        <div class="form-group">
+							            <label class="col-sm-2 control-label">旧密码</label>
+							            <div class="col-sm-10">
+							                <input type="password" class="form-control" placeholder="请输入旧密码" v-model="oldpassword"/>
+							            </div>
+							        </div>
+									<div class="form-group">
+							            <label class="col-sm-2 control-label">新密码</label>
+							            <div class="col-sm-10">
+							                <input type="password" class="form-control" placeholder="请输入新密码" v-model="newpassword"/>
+							            </div>
+							        </div>
+							        <div class="form-group">
+							            <div class="col-sm-offset-2 col-sm-10">
+							                <button type="button" class="btn btn-default" v-on:click="updatePwd">修改</button>
+							            </div>
+							        </div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="vue.js"></script>
+	<script src="axios.min.js"></script>
+	<script src="const.js"></script>
+	<script>
+		var config={
+			"el":"#studentDetailsUpdate",
+			"data":{
+				"infoList":[],
+				"phonenumber":"",
+				"spicture":"",
+				"username":"",
+				"sno":"",
+				"snopassword":"",
+				"oldpassword":"",
+				"newpassword":""
+				},
+			"methods":{
+				"updateInfo":function(){
+					var url = serverUrl+"/updateStudentInfo"
+					+"?phonenumber="+this.phonenumber
+					+"&sno="+this.sno
+					+"&spicture="+this.spicture
+					+"&username="+this.username
+					axios.get(url)
+					.then(function(response){
+						window.alert(response.data.msg)
+						location.href="studentDetails.html"
+					})
+					.catch()
+				},
+				
+			"updatePwd":function(){
+					debugger
+					var url = serverUrl+"/changePassword"
+					+"?newPassword="+this.newpassword
+					+"&oldPassword="+this.oldpassword
+					+"&sno="+this.snopassword
+					
+					axios.get(url)
+					.then(function(response){
+						window.alert(response.data.msg)
+						location.href="studentDetails.html"
+					})
+					.catch()
+				}
+			},
+			"mounted":function(){
+				
+				var sno = window.sessionStorage.getItem("sno")
+				var url = serverUrl+"/getStudentInfo?sno="+sno
+				
+				axios.get(url)
+				.then(function(response){
+					
+					var list = response.data.data
+					this.vue.infoList = list
+				})
+				.catch()
+			}
+		}
+		var vue = new Vue(config)
+		
+	</script>
+</html>
